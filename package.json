@@ -1,0 +1,22 @@
+{
+  "name": "rownd",
+  "version": "0.0.1",
+  "description": "Package dependencies for the rownd project",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jack Rimell",
+  "license": "NONE",
+  "dependencies": {
+    "ractive": "git@github.com:ractivejs/ractive.git#0.7.3"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "matchdep": "^0.3.0",
+  }
+}
