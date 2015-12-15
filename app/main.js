@@ -1,18 +1,14 @@
 /**
  *
- * rmain.js holds all of the code for the Rownd project
+ * main.js holds all of the code for the Rownd project
  *
  * Author: Jack Rimell @silverlight513
  *
  */
 (function(app) {
 
-  // Console.log handler
-  var log = function() {
-    if(console && console.log.apply) {
-      console.log.apply(console, arguments);
-    }
-  };
+  // Create vars needed
+  var routes = {};
 
   // Console.error handler
   var error = function() {
@@ -21,11 +17,47 @@
     }
   };
 
-  // Console.debug handler
-  var debug = function() {
-    if(console && console.debug.apply) {
-      console.debug.apply(console, arguments);
+  /*
+   * Creates a new route for the route object
+  */
+  app.createRoute = function(route) {
+    // Check if the path property exists
+    if(route.hasOwnProperty('path') === false) {
+      error('Path value is missing from a route object');
+      return false;
     }
+
+    // If the user has a blank path assume base url
+    if(route.path === '') {
+      route.path = '/';
+    }
+
+    // Check if the name of the controller is given
+    if(route.hasOwnProperty('controller') === false) {
+      error('Controller value is missing from a route object');
+      return false;
+    } else if(route.controller.length === 0) {
+      error('Controller value is empty in a route object');
+      return false;
+    }
+
+    // Add the new route values to the route object
+    routes[route.path] = route.controller;
   };
+
+  /*
+   * Creates a contoller object for a route to fire
+  */
+  app.createController = function() {
+
+  };
+
+  /*
+   * Predefines the Helpers object
+  */
+  app.Helpers = (function(){
+    return {};
+  });
+
 
 }(this.Rownd = this.Rownd || {}));
