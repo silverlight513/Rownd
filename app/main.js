@@ -22,9 +22,8 @@
   */
   app.createRoute = function(route) {
     // Check if the path property exists
-    if(route.hasOwnProperty('path') === false) {
+    if(!route.path) {
       error('Path value is missing from a route object');
-      return false;
     }
 
     // If the user has a blank path assume base url
@@ -35,10 +34,8 @@
     // Check if the name of the controller is given
     if(route.hasOwnProperty('controller') === false) {
       error('Controller value is missing from a route object');
-      return false;
     } else if(route.controller.length === 0) {
       error('Controller value is empty in a route object');
-      return false;
     }
 
     // Add the new route values to the route object
