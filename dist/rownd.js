@@ -1,54 +1,79 @@
 /*
- * rownd - v0.0.1 - 2015-12-16
+ * rownd - v0.0.1 - 2015-12-19
  * By Jack Rimell - Copyright (c) 2015 Jack Rimell;
 */
 (function(app) {
 
   // Create vars needed
   var routes = {};
+  var accessableControllers = {};
 
-  // Console.error handler
+
+  /**
+   * @description, Function to shout out errors at bad people
+   */
   var error = function() {
     if(console && console.error.apply) {
       console.error.apply(console, arguments);
     }
   };
 
-  /*
-   * Creates a new route for the route object
-  */
-  app.createRoute = function(route) {
+
+  /**
+   * @description, Adds a new route to the route object
+   * @param {String} path, The path of the given route
+   * @param {String} controller, The name of the controller for the specified route
+   */
+  var addRoute = function(path, controller) {
+
     // Check if the path property exists
-    if(!route.path) {
+    if(!path) {
       error('Path value is missing from a route object');
     }
 
     // If the user has a blank path assume base url
-    if(route.path === '') {
-      route.path = '/';
+    if(path === '') {
+      path = '/';
     }
 
     // Check if the name of the controller is given
-    if(route.hasOwnProperty('controller') === false) {
+    if(!controller) {
       error('Controller value is missing from a route object');
-    } else if(route.controller.length === 0) {
+    } else if(controller.length === 0) {
       error('Controller value is empty in a route object');
     }
 
+    routes[path] = controller;
+  };
+
+
+  /**
+   * @param  {object} route, The object that contains path and the controller name
+   * @return {}
+   */
+  app.createRoute = function(route) {
+
     // Add the new route values to the route object
-    routes[route.path] = route.controller;
+    return addRoute(route.path, route.controller);
   };
 
-  /*
-   * Creates a contoller object for a route to fire
-  */
-  app.createController = function() {
 
+  /**
+   * @param  {String} controllerName, The name of the controller given
+   * @param  {Object} controller, The controller object that contains the view, controller and action objects
+   * @return {}
+   */
+  app.createController = function(controllerName, controller) {
+    // Initialise the controller
+    accessableControllers[controllerName] = controller;
+
+    return accessableControllers[controllerName];
   };
 
-  /*
-   * Predefines the Helpers object
-  */
+
+  /**
+   * @description, Sets up the helpers object so it's ready to be used
+   */
   app.Helpers = (function(){
     return {};
   });
