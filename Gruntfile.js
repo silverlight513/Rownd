@@ -47,7 +47,7 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: ['app/**/*.js'],
-        tasks: ['concat:app', 'jshint']
+        tasks: ['concat:app', 'jshint', 'uglify']
       }
     }
 
@@ -62,6 +62,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', [
     'concat',
     'jshint',
+    'uglify',
     'watch']
   );
 
