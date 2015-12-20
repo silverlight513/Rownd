@@ -1,5 +1,5 @@
 /*
- * rownd - v0.0.1 - 2015-12-19
+ * rownd - v0.0.1 - 2015-12-20
  * By Jack Rimell - Copyright (c) 2015 Jack Rimell;
 */
 (function(app) {
@@ -26,14 +26,14 @@
    */
   var addRoute = function(path, controller) {
 
-    // Check if the path property exists
-    if(!path) {
-      error('Path value is missing from a route object');
-    }
-
     // If the user has a blank path assume base url
     if(path === '') {
       path = '/';
+    }
+
+    // Check if the path property exists
+    if(!path) {
+      error('Path value is missing from a route object');
     }
 
     // Check if the name of the controller is given
