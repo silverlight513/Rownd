@@ -72,7 +72,8 @@
       if(routes.hasOwnProperty(key)) {
         // If they key matches the path then use that route object
         if(key === path) {
-          return routes[key];
+          var matchedRoute = {'path': key, 'controller': routes[key]};
+          return matchedRoute;
         } else {
           return false;
         }
