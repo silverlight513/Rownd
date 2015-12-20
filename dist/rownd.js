@@ -79,18 +79,10 @@
   });
 
   /**
-   * @description, Allow the access of all available routes in the console
+   * @description, Allow the access of all available routes and controllers for debugging in the console
    */
-  Rownd.routes = (function() {
-    return routes;
-  });
-
-  /**
-   * @description, Allow the access of all available controllers in the console
-   */
-  Rownd.controllers = (function() {
-    return accessableControllers;
-  });
+  Rownd.routes = routes;
+  Rownd.controllers = accessableControllers;
 
 
 }(this.Rownd = this.Rownd || {}));
