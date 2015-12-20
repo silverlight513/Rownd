@@ -73,14 +73,6 @@
     return accessableControllers[controllerName];
   };
 
-
-  /**
-   * @description, Sets up the helpers object so it's ready to be used
-   */
-  Rownd.Helpers = (function(){
-    return {};
-  });
-
   /**
    * @description, Allow the access of all available routes and controllers for debugging in the console
    */
