@@ -2,7 +2,7 @@
  * rownd - v0.0.1 - 2015-12-20
  * By Jack Rimell - Copyright (c) 2015 Jack Rimell;
 */
-(function(app) {
+(function(Rownd) {
 
   // Create vars needed
   var routes = {};
@@ -51,7 +51,7 @@
    * @param  {object} route, The object that contains path and the controller name
    * @return {}
    */
-  app.createRoute = function(route) {
+  Rownd.createRoute = function(route) {
 
     // Add the new route values to the route object
     return addRoute(route.path, route.controller);
@@ -63,7 +63,7 @@
    * @param  {Object} controller, The controller object that contains the view, controller and action objects
    * @return {}
    */
-  app.createController = function(controllerName, controller) {
+  Rownd.createController = function(controllerName, controller) {
     // Initialise the controller
     accessableControllers[controllerName] = controller;
 
@@ -74,8 +74,22 @@
   /**
    * @description, Sets up the helpers object so it's ready to be used
    */
-  app.Helpers = (function(){
+  Rownd.Helpers = (function(){
     return {};
+  });
+
+  /**
+   * @description, Allow the access of all available routes in the console
+   */
+  Rownd.routes = (function() {
+    return routes;
+  });
+
+  /**
+   * @description, Allow the access of all available controllers in the console
+   */
+  Rownd.controllers = (function() {
+    return accessableControllers;
   });
 
 
