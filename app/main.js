@@ -88,4 +88,32 @@
   Rownd.controllers = accessableControllers;
 
 
+  /**
+   * @description, Initializes and runs Rownd
+   */
+  var hasDomContentLoaded = false;
+  var initFinished = false;
+
+  var initialize = function() {
+    console.log('hello');
+  };
+
+  // Used to detect init of page for > ie8
+  document.addEventListener('DOMContentLoaded', function() {
+    if(!initFinished) {
+      initialize();
+    }
+    hasDomContentLoaded = true;
+  });
+
+  // Used to detect init of page for < ie9
+  if(!hasDomContentLoaded) {
+    document.addEventListener('readystatechange', function() {
+      if(!initFinished) {
+        initialize();
+      }
+    }, false);
+  }
+
+
 }(this.Rownd = this.Rownd || {}));
