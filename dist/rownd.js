@@ -68,11 +68,9 @@
     for(var key in routes) {
       if(routes.hasOwnProperty(key)) {
         // If they key matches the path then use that route object
-        if(JSON.stringify(key) === path) {
+        if(key === path) {
           return routes[key];
         } else {
-          error(key, path);
-          error(key === path);
           return false;
         }
       }
