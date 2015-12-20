@@ -102,6 +102,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     if(!initFinished) {
       initialize();
+      initFinished = true;
     }
     hasDomContentLoaded = true;
   });
@@ -111,6 +112,7 @@
     document.addEventListener('readystatechange', function() {
       if(!initFinished) {
         initialize();
+        initFinished = true;
       }
     }, false);
   }
