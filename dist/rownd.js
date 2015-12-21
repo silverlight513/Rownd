@@ -22,7 +22,7 @@
 
 
   /**
-   * @description, Function to warn others of the things
+   * @description, Function to warn people of the things
    */
   var info = function() {
     if(console && console.info.apply) {
@@ -121,19 +121,23 @@
    * @description, Find and run the controller
    * @param  {String} controllerName, The name of the controller that needs to be fired
    * @param {Object} controller, The controller object given to the create controller function
+   * @param {String} path, The path at which the controller is firing for
    * @return {Function}, The controller that is to be fired
    */
-  var runController = function(controllerName, controller) {
+  var runController = function(controllerName, controller, path) {
 
     if(!controllerName) {
-      error('Please specify a controller with your route');
+      error('A specified controller is missing for the route - ' + path);
     }
 
     if(!controller) {
       error('Unable to find the "'+ controllerName +'" controller');
     }
 
-
+    // Generate and add the template to the controller using the view object if present
+    if(controller.view) {
+      // Need to create the Rownd.generateTemplate function
+    }
   };
 
 
@@ -165,7 +169,7 @@
       // Set the matched route as active
       matchedRoute.active = true;
 
-      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller]);
+      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute.path);
     } else {
       // Tell the user the new paths does not match any paths in the routes object
       error('Cannot find current route');
