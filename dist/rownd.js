@@ -1,11 +1,11 @@
 /*
- * rownd - v0.0.1 - 2015-12-20
+ * rownd - v0.0.1 - 2015-12-21
  * By Jack Rimell - Copyright (c) 2015 Jack Rimell;
 */
 (function(Rownd) {
 
   // Create vars needed
-  var routes = {};
+  var routes = [];
   var accessableControllers = {};
   var previousHash;
   var currentHash;
@@ -17,6 +17,15 @@
   var error = function() {
     if(console && console.error.apply) {
       console.error.apply(console, arguments);
+    }
+  };
+
+  /**
+   * @description, Function to warn others of the things
+   */
+  var info = function() {
+    if(console && console.info.apply) {
+      console.info.apply(console, arguments);
     }
   };
 
@@ -65,15 +74,11 @@
    */
   var findMatchingRoute = function(path) {
     // Loop through the routes object and find a matching path
-    for(var key in routes) {
-      if(routes.hasOwnProperty(key)) {
-        // If they key matches the path then use that route object
-        if(key === path) {
-          var matchedRoute = {'path': key, 'controller': routes[key]};
-          return matchedRoute;
-        } else {
-          return false;
-        }
+    for (var i = routes.length - 1; i >= 0; i--) {
+      if(routes[i].path === path) {
+        return routes[i];
+      } else {
+        return false;
       }
     }
   };
@@ -95,18 +100,18 @@
   };
 
   /**
-   * @description, Loops through the routes object and clears all routes to be non-active
+   * @description, Loops through the routes array and clears all routes to be non-active
    */
   var clearActiveRoutes = function() {
-    for(var key in routes) {
-      if(routes[key] && routes[key].active) {
-        routes[key].active = false;
+    for (var i = routes.length - 1; i >= 0; i--) {
+      if(routes[i].active) {
+        routes[i].active = false;
       }
     }
   };
 
   var runController = function() {
-    // YOURE AT THIS BIT!!!!!!!!!!!
+    info('about to run controller');
   };
 
 
@@ -150,7 +155,7 @@
 
 
   /**
-   * @description, Adds a new route to the route object
+   * @description, Adds a new route to the routes array
    * @param {String} path, The path of the given route
    * @param {String} controller, The name of the controller for the specified route
    */
@@ -172,14 +177,13 @@
     } else if(controller.length === 0) {
       error('Controller value is empty in a route object');
     }
-
-    routes[path] = controller;
+    // Push new route to the routes array
+    routes.push({'path': path, 'controller': controller});
   };
 
 
   /**
    * @param  {object} route, The object that contains path and the controller name
-   * @return {}
    */
   Rownd.createRoute = function(route) {
 
@@ -191,7 +195,6 @@
   /**
    * @param  {String} controllerName, The name of the controller given
    * @param  {Object} controller, The controller object that contains the view, controller and action objects
-   * @return {}
    */
   Rownd.createController = function(controllerName, controller) {
     // Initialise the controller
@@ -214,7 +217,7 @@
   var initFinished = false;
 
   var initialize = function() {
-    console.log('Initializing Rownd');
+    info('Initializing Rownd');
     navChange();
   };
 
