@@ -119,6 +119,15 @@
     }
   };
 
+  /**
+   * @description, The function used to render a handlebars template with data
+   * @param  {Object} template, The object with all of the details needed to render the handlebars and attach data
+   * @return {[type]}
+   */
+  Rownd.generateTemplate = function(template) {
+    info(template);
+  };
+
 
   /**
    * @description, Find and run the controller
@@ -139,8 +148,13 @@
 
     // Generate and add the template to the controller using the view object if present
     if(controller.view) {
-      // Need to create the Rownd.generateTemplate function
+      accessableControllers[controllerName] = Rownd.generateTemplate(controller.view);
+    } else {
+      error('No initial view was given to the controller');
+      return false;
     }
+
+
   };
 
 
