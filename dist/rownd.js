@@ -77,10 +77,9 @@
     for (var i = routes.length - 1; i >= 0; i--) {
       if(routes[i].path === path) {
         return routes[i];
-      } else {
-        return false;
       }
     }
+    return false;
   };
 
   /**
