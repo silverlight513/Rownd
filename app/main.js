@@ -23,6 +23,7 @@
     }
   };
 
+
   /**
    * @description, Function to warn others of the things
    */
@@ -31,6 +32,7 @@
       console.info.apply(console, arguments);
     }
   };
+
 
   /**
    * @param  {String} text, The string that will be searched
@@ -41,6 +43,7 @@
     return text.indexOf(character) === 0;
   };
 
+
   /**
    * @param  {String} text, The string that will be searched
    * @param  {String} character, The character to find in the string
@@ -49,6 +52,7 @@
   var endsWith = function(text, character){
     return text.charAt(text.length - 1) === character;
   };
+
 
   /**
    * @param  {String} hash, The url to be checked if it's a hash or real path
@@ -70,6 +74,7 @@
     return hash;
   };
 
+
   /**
    * @description, Gets a route object that matches the given path
    * @param  {String} path,
@@ -84,6 +89,7 @@
     }
     return false;
   };
+
 
   /**
    * @description, Gets the current pages hash
@@ -101,6 +107,7 @@
     return hash.split('?')[0];
   };
 
+
   /**
    * @description, Loops through the routes array and clears all routes to be non-active
    */
@@ -112,8 +119,20 @@
     }
   };
 
-  var runController = function() {
-    info('about to run controller');
+
+  /**
+   * @description, Find and run the controller
+   * @param  {String} controllerName, The name of the controller that needs to be fired
+   * @return {Function}, The controller that is to be fired
+   */
+  var runController = function(controllerName) {
+
+    if(!controllerName) {
+      error('Please specify a controller with your route');
+    }
+
+    // Find the controller using the controller name
+
   };
 
 
@@ -198,12 +217,19 @@
    * @param  {String} controllerName, The name of the controller given
    * @param  {Object} controller, The controller object that contains the view, controller and action objects
    */
-  Rownd.createController = function(controllerName, controller) {
+  Rownd.createController = function(controllerName, controllerObject) {
     // Initialise the controller
-    accessableControllers[controllerName] = controller;
+    accessableControllers[controllerName] = controllerObject;
 
     return accessableControllers[controllerName];
   };
+
+  /**
+   * @description, Sets up the helpers object so it's ready to be used
+   */
+  Rownd.Helpers = (function(){
+    return {};
+  });
 
   /**
    * @description, Allow the access of all available routes and controllers for debugging in the console
