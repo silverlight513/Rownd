@@ -120,15 +120,19 @@
   /**
    * @description, Find and run the controller
    * @param  {String} controllerName, The name of the controller that needs to be fired
+   * @param {Object} controller, The controller object given to the create controller function
    * @return {Function}, The controller that is to be fired
    */
-  var runController = function(controllerName) {
+  var runController = function(controllerName, controller) {
 
     if(!controllerName) {
       error('Please specify a controller with your route');
     }
 
-    // Find the controller using the controller name
+    if(!controller) {
+      error('Unable to find the "'+ controllerName +'" controller');
+    }
+
 
   };
 
@@ -161,7 +165,7 @@
       // Set the matched route as active
       matchedRoute.active = true;
 
-      runController(matchedRoute.controller);
+      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller]);
     } else {
       // Tell the user the new paths does not match any paths in the routes object
       error('Cannot find current route');
