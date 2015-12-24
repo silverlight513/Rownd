@@ -18,6 +18,7 @@ module.exports = function(grunt) {
       },
       app: {
         src: [
+          'node_modules/ractive/ractive.js',
           'app/main.js'
         ],
         dest: 'dist/rownd.js'

@@ -9,7 +9,7 @@
   "author": "Jack Rimell",
   "license": "NONE",
   "dependencies": {
-    "ractive": "git@github.com:ractivejs/ractive.git"
+    "ractive": "git@github.com:ractivejs/ractive.git#v0.7.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
