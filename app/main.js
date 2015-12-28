@@ -18,6 +18,9 @@
     debug: true
   };
 
+  // Namespace to store controllers upon set up
+  Rownd.controllers = {};
+
 
   /**
    * @description, Function to shout out errors at bad people
