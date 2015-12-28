@@ -122,10 +122,47 @@
   /**
    * @description, The function used to render a handlebars template with data
    * @param  {Object} template, The object with all of the details needed to render the handlebars and attach data
-   * @return {[type]}
+   * @return {Object}, Returns a Ractive object that will populate the DOM
+   *
    */
   Rownd.generateTemplate = function(template) {
     info(template);
+
+    // If no location for the template given then use the body
+    if(!template.outlet) {
+      template.outlet = 'body';
+    }
+
+    // Check if the user didn't use the append value
+    if(typeof template.append === 'undefined') {
+      template.append = false;
+    }
+
+    // Allow the templates to be used as partials inside other templates
+    if(JSON.stringify(Ractive.partials) === '{}'){
+      Ractive.partials = Rownd.templates;
+    }
+
+    if(template.template) {
+      // Set up the params needed for the Ractive object
+      var templateObject = {
+        el: template.outlet,
+        template: Rownd.templates[template.template],
+        append : template.append
+      };
+
+      // Add data if it is given in the parameters
+      if(typeof template.data !== undefined) {
+        templateObject.data = template.data;
+      }
+
+      return new Ractive(templateObject);
+
+    } else {
+      error('Unable to find a matching template for - ' + template.template);
+      return false;
+    }
+
   };
 
 
