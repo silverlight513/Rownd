@@ -16789,15 +16789,20 @@
 
     if(!controllerName) {
       error('A specified controller is missing for the route - ' + path);
+      return false;
     }
 
     if(!controller) {
       error('Unable to find the "'+ controllerName +'" controller');
+      return false;
     }
+
+    // Create a namespace for the conroller in Rownd
+    Rownd.controllers[controllerName] = {};
 
     // Generate and add the template to the controller using the view object if present
     if(controller.view) {
-      accessableControllers[controllerName] = Rownd.generateTemplate(controller.view);
+      Rownd.controllers[controllerName] = Rownd.generateTemplate(controller.view);
     } else {
       error('No initial view was given to the controller');
       return false;
@@ -16835,7 +16840,7 @@
       // Set the matched route as active
       matchedRoute.active = true;
 
-      runController(matchedRoute.controller, Rownd.controllers[matchedRoute.controller], matchedRoute.path);
+      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute.path);
     } else {
       // Tell the user the new paths does not match any paths in the routes object
       error('Cannot find current route');
@@ -16902,10 +16907,9 @@
   });
 
   /**
-   * @description, Allow the access of all available routes and controllers for debugging in the console
+   * @description, Allow the access of all available routes for debugging in the console
    */
   Rownd.routes = routes;
-  Rownd.controllers = accessableControllers;
 
   /**
    * @description, Listens to when there was a hashchange made when there is no history mode enabled
