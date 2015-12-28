@@ -16620,12 +16620,17 @@
   var previousHash;
   var currentHash;
 
+  // Set up the config screen so you can
+  Rownd.config = {
+    debug: false
+  };
+
 
   /**
    * @description, Function to shout out errors at bad people
    */
   var error = function() {
-    if(console && console.error.apply) {
+    if(console && console.error.apply && Rownd.config.debug) {
       console.error.apply(console, arguments);
     }
   };
@@ -16635,7 +16640,7 @@
    * @description, Function to warn people of the things
    */
   var info = function() {
-    if(console && console.info.apply) {
+    if(console && console.info.apply && Rownd.config.debug) {
       console.info.apply(console, arguments);
     }
   };
@@ -16913,6 +16918,8 @@
   var initialize = function() {
     info('Initializing Rownd');
     navChange();
+
+    // Add history mode
   };
 
   // Used to detect init of page for > ie8
