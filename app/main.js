@@ -14,7 +14,7 @@
   var currentHash;
 
   // Set up the config screen so you can
-  Rownd.config = {
+  var config = {
     debug: true
   };
 
@@ -26,7 +26,7 @@
    * @description, Function to shout out errors at bad people
    */
   var error = function() {
-    if(console && console.error.apply && Rownd.config.debug) {
+    if(console && console.error.apply && config.debug) {
       console.error.apply(console, arguments);
     }
   };
@@ -36,7 +36,7 @@
    * @description, Function to warn people of the things
    */
   var info = function() {
-    if(console && console.info.apply && Rownd.config.debug) {
+    if(console && console.info.apply && config.debug) {
       console.info.apply(console, arguments);
     }
   };
@@ -59,6 +59,21 @@
    */
   var endsWith = function(text, character){
     return text.charAt(text.length - 1) === character;
+  };
+
+
+  /**
+   * @description, Updates all of the configurations when starting Rownd
+   * @param  {Object} config, An object of all the configs
+   */
+  Rownd.start = function(newConfig) {
+    for(var key in newConfig) {
+      if(newConfig.hasOwnProperty(key) && config.hasOwnProperty(key)) {
+        config[key] = newConfig[key];
+      }
+    }
+
+    return this;
   };
 
 
@@ -311,7 +326,7 @@
    * @description, Listens to when there was a hashchange made when there is no history mode enabled
    */
   window.addEventListener('hashchange', function() {
-    if(!Rownd.config.useHistory || !window.history) {
+    if(!config.useHistory || !window.history) {
       navChange();
     }
   }, false);
