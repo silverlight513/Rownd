@@ -15,7 +15,7 @@
 
   // Set up the config screen so you can
   Rownd.config = {
-    debug: false
+    debug: true
   };
 
 
@@ -228,7 +228,7 @@
       // Set the matched route as active
       matchedRoute.active = true;
 
-      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute.path);
+      runController(matchedRoute.controller, Rownd.controllers[matchedRoute.controller], matchedRoute.path);
     } else {
       // Tell the user the new paths does not match any paths in the routes object
       error('Cannot find current route');
@@ -271,7 +271,6 @@
    * @param  {object} route, The object that contains path and the controller name
    */
   Rownd.createRoute = function(route) {
-
     // Add the new route values to the route object
     return addRoute(route.path, route.controller);
   };
