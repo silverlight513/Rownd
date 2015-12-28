@@ -16908,6 +16908,15 @@
   Rownd.routes = routes;
   Rownd.controllers = accessableControllers;
 
+  /**
+   * @description, Listens to when there was a hashchange made when there is no history mode enabled
+   */
+  window.addEventListener('hashchange', function() {
+    if(!Rownd.config.useHistory || !window.history) {
+      navChange();
+    }
+  }, false);
+
 
   /**
    * @description, Initializes and runs Rownd
@@ -16919,7 +16928,7 @@
     info('Initializing Rownd');
     navChange();
 
-    // Add history mode
+    // TODO: Add history mode
   };
 
   // Used to detect init of page for > ie8
