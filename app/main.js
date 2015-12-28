@@ -73,6 +73,11 @@
       }
     }
 
+    // Disable debug mode for ractive if user sets debug to false
+    if(!config.debug) {
+      Ractive.DEBUG = false;
+    }
+
     return this;
   };
 

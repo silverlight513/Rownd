@@ -16680,6 +16680,11 @@
       }
     }
 
+    // Disable debug mode for ractive if user sets debug to false
+    if(!config.debug) {
+
+    }
+
     return this;
   };
 
