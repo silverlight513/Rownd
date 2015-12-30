@@ -16916,8 +16916,6 @@
    * @param  {Object} controller, The controller object that contains the view, controller and action objects
    */
   Rownd.createController = function(controllerName, controllerObject) {
-    console.log(controllerObject);
-    console.log(controllerObject.controller);
     // Initialise the controller
     accessableControllers[controllerName] = controllerObject;
 
