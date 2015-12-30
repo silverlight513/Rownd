@@ -16806,7 +16806,7 @@
    * @param  {String} controllerName, The name of the controller that needs to be fired
    * @param {Object} controller, The controller object given to the create controller function
    * @param {String} path, The path at which the controller is firing for
-   * @return {Function}, The controller that is to be fired
+   * @return {Function}, The controller that is fired
    */
   var runController = function(controllerName, controller, path) {
 
@@ -16827,11 +16827,25 @@
     if(controller.view) {
       Rownd.controllers[controllerName] = Rownd.generateTemplate(controller.view);
     } else {
-      error('No initial view was given to the controller');
+      error('The view object is missing from controller - ' + controllerName);
       return false;
     }
 
+    // Add the controller function to the new controller object
+    if(controller.controller) {
+      Rownd.controllers[controllerName].controller = controller.controller;
+    } else {
+      error('The controller function is missing from controller - ' + controllerName);
+    }
 
+    // Add the actions to the new controller function
+    if(controller.actions) {
+      Rownd.controllers[controllerName].on(controller.actions);
+    }
+
+    // Run the controller
+    Rownd.controllers[controllerName].controller(path);
+    return Rownd.controllers[controllerName];
   };
 
 
