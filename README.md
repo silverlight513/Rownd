@@ -14,4 +14,5 @@ Usage of this framework is free to use for private and commercial usage.
  - Console version if not in debug mode
  - Allow use of dynamic routes
  - Hierarchical routes with parents
- - Add tests for actions and helpers (maybe controllers, depends on scope)
+ - Add tests for framework functions
+ - Add in History mode so no need for the #

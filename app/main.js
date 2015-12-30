@@ -15,7 +15,9 @@
 
   // Set up the config screen so you can
   var config = {
-    debug: true
+    'debug': true,
+    'hideInfo': false,
+    'showVersion': true
   };
 
   // Namespace to store controllers upon set up
@@ -36,7 +38,7 @@
    * @description, Function to warn people of the things
    */
   var info = function() {
-    if(console && console.info.apply && config.debug) {
+    if(console && console.info.apply && !config.hideInfo) {
       console.info.apply(console, arguments);
     }
   };
@@ -154,7 +156,6 @@
    *
    */
   Rownd.generateTemplate = function(template) {
-    info(template);
 
     // If no location for the template given then use the body
     if(!template.outlet) {
@@ -359,6 +360,12 @@
 
   var initialize = function() {
     info('Initializing Rownd');
+    // Need to somehow auto update number
+    if(config.showVersion){
+      info('Running Rownd v0.0.1');
+    }
+
+    // Function for loading new page
     navChange();
 
     // TODO: Add history mode
