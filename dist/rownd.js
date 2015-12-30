@@ -1,5 +1,5 @@
 /*
- * rownd - v0.0.1 - 2015-12-28
+ * rownd - v0.0.1 - 2015-12-30
  * By Jack Rimell - Copyright (c) 2015 Jack Rimell;
 */
 (function (global, factory) {
@@ -16682,7 +16682,7 @@
 
     // Disable debug mode for ractive if user sets debug to false
     if(!config.debug) {
-
+      Ractive.DEBUG = false;
     }
 
     return this;
