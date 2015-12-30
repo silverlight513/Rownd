@@ -8,10 +8,10 @@ Usage of this framework is free to use for private and commercial usage.
 ##Project Items Left to do
  - Create a documentation site
  - Create a github static page
- - Finish alpha version
+ - Finish beta version
 
 ##Code Additions still to do
- - Add an optional config setting on init for debug and the like
- - Console an init in dev mode to show errors or show just init and version if in prod
+ - Console version if not in debug mode
  - Allow use of dynamic routes
  - Hierarchical routes with parents
+ - Add tests for actions and helpers (maybe controllers, depends on scope)
