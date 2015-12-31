@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">44.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>60/150</span>
+        <span class='fraction'>67/150</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.91% </span>
+        <span class="strong">28.26% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>22/92</span>
+        <span class='fraction'>26/92</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.38% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>11/21</span>
+        <span class='fraction'>14/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">44.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>60/150</span>
+        <span class='fraction'>67/150</span>
       </div>
     </div>
   </div>
@@ -818,23 +818,33 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -845,16 +855,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -862,7 +862,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1253,35 +1253,35 @@
    * @param {String} path, The path of the given route
    * @param {String} controller, The name of the controller for the specified route
    */
-  var addRoute = <span class="fstat-no" title="function not covered" >function(path, controller) {</span>
+  var addRoute = function(path, controller) {
 &nbsp;
     // If the user has a blank path assume base url
-<span class="cstat-no" title="statement not covered" >    if(path === '') {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(path === '') {
 <span class="cstat-no" title="statement not covered" >      path = '/';</span>
     }
 &nbsp;
     // Check if the path property exists
-<span class="cstat-no" title="statement not covered" >    if(!path) {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(!path) {
 <span class="cstat-no" title="statement not covered" >      error('Path value is missing from a route object');</span>
     }
 &nbsp;
     // Check if the name of the controller is given
-<span class="cstat-no" title="statement not covered" >    if(!controller) {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(!controller) {
 <span class="cstat-no" title="statement not covered" >      error('Controller value is missing from a route object');</span>
-    } else <span class="cstat-no" title="statement not covered" >if(controller.length === 0) {</span>
+    } else <span class="missing-if-branch" title="if path not taken" >I</span>if(controller.length === 0) {
 <span class="cstat-no" title="statement not covered" >      error('Controller value is empty in a route object');</span>
     }
     // Push new route to the routes array
-<span class="cstat-no" title="statement not covered" >    routes.push({'path': path, 'controller': controller});</span>
+    routes.push({'path': path, 'controller': controller});
   };
 &nbsp;
 &nbsp;
   /**
    * @param  {object} route, The object that contains path and the controller name
    */
-  Rownd.createRoute = <span class="fstat-no" title="function not covered" >function(route) {</span>
+  Rownd.createRoute = function(route) {
     // Add the new route values to the route object
-<span class="cstat-no" title="statement not covered" >    return addRoute(route.path, route.controller);</span>
+    return addRoute(route.path, route.controller);
   };
 &nbsp;
 &nbsp;
@@ -1299,8 +1299,8 @@
   /**
    * @description, Sets up the helpers object so it's ready to be used
    */
-  Rownd.Helpers = (<span class="fstat-no" title="function not covered" >function(){</span>
-<span class="cstat-no" title="statement not covered" >    return {};</span>
+  Rownd.Helpers = (function(){
+    return {};
   });
 &nbsp;
   /**
@@ -1363,7 +1363,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Dec 31 2015 17:15:47 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Dec 31 2015 18:58:09 GMT+0000 (GMT)
 </div>
 </div>
 <script src="../prettify.js"></script>
