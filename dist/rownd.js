@@ -16740,7 +16740,7 @@
       for (var j = splitRoute.length - 1; j >= 0; j--) {
 
         // If this part is dynamic add the value to params and go to next part
-        if(splitRoute[j].indexOf(':')) {
+        if(splitRoute[j].indexOf(':') > -1) {
           params[splitRoute[j].substring(1)] = splitPath[j];
           continue;
         }
