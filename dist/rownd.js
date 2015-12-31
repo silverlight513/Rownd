@@ -1,5 +1,5 @@
 /*
- * rownd - v0.1.0 - 2015-12-30
+ * rownd - v0.1.0 - 2015-12-31
  * By Jack Rimell - Copyright (c) 2015 Jack Rimell;
 */
 (function (global, factory) {
@@ -16714,23 +16714,58 @@
 
   /**
    * @description, Gets a route object that matches the given path
-   * @param  {String} path,
-   * @return {[type]}
+   * @param  {String} path, The current url of the user
+   * @return {[type]}, The matched route object
    */
   var findMatchingRoute = function(path) {
     // Loop through the routes object and find a matching path
     for (var i = routes.length - 1; i >= 0; i--) {
+
+      // If the route doesn't have any dynamic parts to it
       if(routes[i].path === path) {
         return routes[i];
       }
+
+      // If the route has a dynamic section convert both paths to find match
+      var splitRoute = routes[2].path.split('/');
+      splitRoute = splitRoute.splice(1, splitRoute.length);
+
+      var splitPath = path.split('/');
+      splitPath = splitPath.splice(1, splitPath.length);
+
+      // Object to store the params of the route
+      var params = {};
+
+      // Loop over each part of the paths
+      for (var j = splitRoute.length - 1; j >= 0; j--) {
+
+        // If this part is dynamic add the value to params and go to next part
+        if(splitRoute[j].indexOf(':')) {
+          params[splitRoute[j].substring(1)] = splitPath[j];
+          continue;
+        }
+
+        // If this doesn't match then go to next route item
+        if(splitRoute[j] !== splitPath[j]) {
+          break;
+        }
+
+        // If it's the last item and it matches, return the matched route with it's params
+        if(splitRoute[j] === splitPath[j] && j === 0) {
+          var matchedRoute = {path: routes[i].path, controller: routes[i].controller, params: params};
+          return matchedRoute;
+        }
+      }
     }
+
+    // No matching route was found (error message displayed in outer function)
     return false;
   };
 
 
   /**
-   * @description, Gets the current pages hash
-   * @return {String}, The new hash
+   * @description, Gets the current pages path or hash
+   * @return {String}, The new path or hash
    */
   var getNewHash = function() {
     var hash = hashOrPath(window.location.host.length > 0 ? window.location.href.split(window.location.host)[1] : window.location.href);
@@ -16878,6 +16913,7 @@
       // Set the matched route as active
       matchedRoute.active = true;
 
+      //TODO: change matchedRoute.path to {matchedRoute.path, matchedRoute.params}
       runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute.path);
     } else {
       // Tell the user the new paths does not match any paths in the routes object
