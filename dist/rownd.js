@@ -16735,13 +16735,20 @@
 
       // Object to store the params of the route
       var params = {};
+      var matchedRoute = {};
 
       // Loop over each part of the paths
       for (var j = splitRoute.length - 1; j >= 0; j--) {
 
         // If this part is dynamic add the value to params and go to next part
-        if(splitRoute[j].indexOf(':') > -1) {
+        if(splitRoute[j].indexOf(':') > -1  ) {
           params[splitRoute[j].substring(1)] = splitPath[j];
+          // If this is the last part of the path then return the matched route
+          if(j === 0) {
+            matchedRoute = {path: routes[i].path, controller: routes[i].controller, params: params};
+            return matchedRoute;
+          }
+          // Continue to the next part of the path
           continue;
         }
 
@@ -16752,7 +16759,7 @@
 
         // If it's the last item and it matches, return the matched route with it's params
         if(splitRoute[j] === splitPath[j] && j === 0) {
-          var matchedRoute = {path: routes[i].path, controller: routes[i].controller, params: params};
+          matchedRoute = {path: routes[i].path, controller: routes[i].controller, params: params};
           return matchedRoute;
         }
       }
