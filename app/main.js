@@ -244,10 +244,10 @@
    * @param {String} path, The path at which the controller is firing for
    * @return {Function}, The controller that is fired
    */
-  var runController = function(controllerName, controller, path) {
+  var runController = function(controllerName, controller, routeData) {
 
     if(!controllerName) {
-      error('A specified controller is missing for the route - ' + path);
+      error('A specified controller is missing for the route - ' + routeData.path);
       return false;
     }
 
@@ -280,7 +280,7 @@
     }
 
     // Run the controller
-    Rownd.controllers[controllerName].controller(path);
+    Rownd.controllers[controllerName].controller(routeData);
     return Rownd.controllers[controllerName];
   };
 
@@ -313,8 +313,7 @@
       // Set the matched route as active
       matchedRoute.active = true;
 
-      //TODO: change matchedRoute.path to {matchedRoute.path, matchedRoute.params}
-      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute.path);
+      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute);
     } else {
       // Tell the user the new paths does not match any paths in the routes object
       error('Cannot find current route');
