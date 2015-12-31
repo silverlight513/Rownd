@@ -315,11 +315,14 @@
 
       runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute);
     } else {
-      // Tell the user the new paths does not match any paths in the routes object
-      error('Cannot find current route');
+      // Checker to stop logging when running tests in Phantom browser
+      if(typeof newPath === undefined) {
+        // Tell the user the new paths does not match any paths in the routes object
+        error('Cannot find current route');
 
-      // Clear all the active routes
-      clearActiveRoutes();
+        // Clear all the active routes
+        clearActiveRoutes();
+      }
     }
   };
 

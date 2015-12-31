@@ -1,0 +1,1379 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/main.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">app/</a> main.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>60/150</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">23.91% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>22/92</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">52.38% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>11/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>60/150</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ *
+ * main.js holds all of the code for the Rownd project
+ *
+ * Author: Jack Rimell @silverlight513
+ *
+ */
+(function(Rownd) {
+&nbsp;
+  // Create vars needed
+  var routes = [];
+  var accessableControllers = {};
+  var previousHash;
+  var currentHash;
+&nbsp;
+  // Set up the config screen so you can
+  var config = {
+    'debug': true,
+    'hideInfo': false,
+    'showVersion': true
+  };
+&nbsp;
+  // Namespace to store controllers upon set up
+  Rownd.controllers = {};
+&nbsp;
+&nbsp;
+  /**
+   * @description, Function to shout out errors at bad people
+   */
+  var error = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    if(console &amp;&amp; console.error.apply &amp;&amp; config.debug) {</span>
+<span class="cstat-no" title="statement not covered" >      console.error.apply(console, arguments);</span>
+    }
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, Function to warn people of the things
+   */
+  var info = function() {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if(console &amp;&amp; console.info.apply &amp;&amp; !config.hideInfo) {
+      console.info.apply(console, arguments);
+    }
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @param  {String} text, The string that will be searched
+   * @param  {String} character, The character to find in the string
+   * @return {Boolean}, If the character is found at the beginning of the string
+   */
+  var startsWith = function(text, character) {
+    return text.indexOf(character) === 0;
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @param  {String} text, The string that will be searched
+   * @param  {String} character, The character to find in the string
+   * @return {Boolean}, If the character is found at the end of the string
+   */
+  var endsWith = function(text, character){
+    return text.charAt(text.length - 1) === character;
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, Updates all of the configurations when starting Rownd
+   * @param  {Object} config, An object of all the configs
+   */
+  Rownd.start = <span class="fstat-no" title="function not covered" >function(newConfig) {</span>
+<span class="cstat-no" title="statement not covered" >    for(var key in newConfig) {</span>
+<span class="cstat-no" title="statement not covered" >      if(newConfig.hasOwnProperty(key) &amp;&amp; config.hasOwnProperty(key)) {</span>
+<span class="cstat-no" title="statement not covered" >        config[key] = newConfig[key];</span>
+      }
+    }
+&nbsp;
+    // Disable debug mode for ractive if user sets debug to false
+<span class="cstat-no" title="statement not covered" >    if(!config.debug) {</span>
+<span class="cstat-no" title="statement not covered" >      Ractive.DEBUG = false;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return this;</span>
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @param  {String} hash, The url to be checked if it's a hash or real path
+   * @return {String}, The string without the hash if it was a hash
+   */
+  var hashOrPath = function(hash) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(startsWith(hash, '/#!')){
+<span class="cstat-no" title="statement not covered" >      hash = hash.slice(3);</span>
+    } else <span class="missing-if-branch" title="if path not taken" >I</span>if(startsWith(hash, '/#/')){
+<span class="cstat-no" title="statement not covered" >      hash = hash.slice(2);</span>
+    } else <span class="missing-if-branch" title="if path not taken" >I</span>if(startsWith(hash, '#')){
+<span class="cstat-no" title="statement not covered" >      hash = hash.slice(1);</span>
+    }
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(hash.indexOf('#') &gt; -1){
+<span class="cstat-no" title="statement not covered" >      hash = hash.split('#')[0];</span>
+    }
+&nbsp;
+    return hash;
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, Gets a route object that matches the given path
+   * @param  {String} path, The current url of the user
+   * @return {[type]}, The matched route object
+   */
+  var findMatchingRoute = function(path) {
+    // Loop through the routes object and find a matching path
+    for (var i = routes.length - 1; i &gt;= 0; i--) {
+&nbsp;
+      // If the route doesn't have any dynamic parts to it
+<span class="cstat-no" title="statement not covered" >      if(routes[i].path === path) {</span>
+<span class="cstat-no" title="statement not covered" >        return routes[i];</span>
+      }
+&nbsp;
+      // If the route has a dynamic section convert both paths to find match
+<span class="cstat-no" title="statement not covered" >      var splitRoute = routes[2].path.split('/');</span>
+<span class="cstat-no" title="statement not covered" >      splitRoute = splitRoute.splice(1, splitRoute.length);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      var splitPath = path.split('/');</span>
+<span class="cstat-no" title="statement not covered" >      splitPath = splitPath.splice(1, splitPath.length);</span>
+&nbsp;
+      // Object to store the params of the route
+<span class="cstat-no" title="statement not covered" >      var params = {};</span>
+<span class="cstat-no" title="statement not covered" >      var matchedRoute = {};</span>
+&nbsp;
+      // Loop over each part of the paths
+<span class="cstat-no" title="statement not covered" >      for (var j = splitRoute.length - 1; j &gt;= 0; j--) {</span>
+&nbsp;
+        // If this part is dynamic add the value to params and go to next part
+<span class="cstat-no" title="statement not covered" >        if(splitRoute[j].indexOf(':') &gt; -1  ) {</span>
+<span class="cstat-no" title="statement not covered" >          params[splitRoute[j].substring(1)] = splitPath[j];</span>
+          // If this is the last part of the path then return the matched route
+<span class="cstat-no" title="statement not covered" >          if(j === 0) {</span>
+<span class="cstat-no" title="statement not covered" >            matchedRoute = {path: routes[i].path, controller: routes[i].controller, params: params};</span>
+<span class="cstat-no" title="statement not covered" >            return matchedRoute;</span>
+          }
+          // Continue to the next part of the path
+<span class="cstat-no" title="statement not covered" >          continue;</span>
+        }
+&nbsp;
+        // If this doesn't match then go to next route item
+<span class="cstat-no" title="statement not covered" >        if(splitRoute[j] !== splitPath[j]) {</span>
+<span class="cstat-no" title="statement not covered" >          break;</span>
+        }
+&nbsp;
+        // If it's the last item and it matches, return the matched route with it's params
+<span class="cstat-no" title="statement not covered" >        if(splitRoute[j] === splitPath[j] &amp;&amp; j === 0) {</span>
+<span class="cstat-no" title="statement not covered" >          matchedRoute = {path: routes[i].path, controller: routes[i].controller, params: params};</span>
+<span class="cstat-no" title="statement not covered" >          return matchedRoute;</span>
+        }
+      }
+    }
+&nbsp;
+    // No matching route was found (error message displayed in outer function)
+    return false;
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, Gets the current pages path or hash
+   * @return {String}, The new path or hash
+   */
+  var getNewHash = function() {
+    var hash = hashOrPath(window.location.host.length &gt; 0 ? window.location.href.split(window.location.host)[1] : <span class="branch-1 cbranch-no" title="branch not covered" >window.location.href)</span>;
+&nbsp;
+    // Remove trailing slash
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(hash.length &gt; 1 &amp;&amp; endsWith(hash, '/')){
+<span class="cstat-no" title="statement not covered" >      hash = hash.slice(0, -1);</span>
+    }
+&nbsp;
+    // Return a non query version of the url
+    return hash.split('?')[0];
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, Loops through the routes array and clears all routes to be non-active
+   */
+  var clearActiveRoutes = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = routes.length - 1; i &gt;= 0; i--) {</span>
+<span class="cstat-no" title="statement not covered" >      if(routes[i].active) {</span>
+<span class="cstat-no" title="statement not covered" >        routes[i].active = false;</span>
+      }
+    }
+  };
+&nbsp;
+  /**
+   * @description, The function used to render a handlebars template with data
+   * @param  {Object} template, The object with all of the details needed to render the handlebars and attach data
+   * @return {Object}, Returns a Ractive object that will populate the DOM
+   *
+   */
+  Rownd.generateTemplate = <span class="fstat-no" title="function not covered" >function(template) {</span>
+&nbsp;
+    // If no location for the template given then use the body
+<span class="cstat-no" title="statement not covered" >    if(!template.outlet) {</span>
+<span class="cstat-no" title="statement not covered" >      template.outlet = 'body';</span>
+    }
+&nbsp;
+    // Check if the user didn't use the append value
+<span class="cstat-no" title="statement not covered" >    if(typeof template.append === 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >      template.append = false;</span>
+    }
+&nbsp;
+    // Allow the templates to be used as partials inside other templates
+<span class="cstat-no" title="statement not covered" >    if(JSON.stringify(Ractive.partials) === '{}'){</span>
+<span class="cstat-no" title="statement not covered" >      Ractive.partials = Rownd.templates;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if(template.template) {</span>
+      // Set up the params needed for the Ractive object
+<span class="cstat-no" title="statement not covered" >      var templateObject = {</span>
+        el: template.outlet,
+        template: Rownd.templates[template.template],
+        append : template.append
+      };
+&nbsp;
+      // Add data if it is given in the parameters
+<span class="cstat-no" title="statement not covered" >      if(typeof template.data !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >        templateObject.data = template.data;</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return new Ractive(templateObject);</span>
+&nbsp;
+    } else {
+<span class="cstat-no" title="statement not covered" >      error('Unable to find a matching template for - ' + template.template);</span>
+<span class="cstat-no" title="statement not covered" >      return false;</span>
+    }
+&nbsp;
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, Find and run the controller
+   * @param  {String} controllerName, The name of the controller that needs to be fired
+   * @param {Object} controller, The controller object given to the create controller function
+   * @param {String} path, The path at which the controller is firing for
+   * @return {Function}, The controller that is fired
+   */
+  var runController = <span class="fstat-no" title="function not covered" >function(controllerName, controller, routeData) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if(!controllerName) {</span>
+<span class="cstat-no" title="statement not covered" >      error('A specified controller is missing for the route - ' + routeData.path);</span>
+<span class="cstat-no" title="statement not covered" >      return false;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if(!controller) {</span>
+<span class="cstat-no" title="statement not covered" >      error('Unable to find the "'+ controllerName +'" controller');</span>
+<span class="cstat-no" title="statement not covered" >      return false;</span>
+    }
+&nbsp;
+    // Create a namespace for the conroller in Rownd
+<span class="cstat-no" title="statement not covered" >    Rownd.controllers[controllerName] = {};</span>
+&nbsp;
+    // Generate and add the template to the controller using the view object if present
+<span class="cstat-no" title="statement not covered" >    if(controller.view) {</span>
+<span class="cstat-no" title="statement not covered" >      Rownd.controllers[controllerName] = Rownd.generateTemplate(controller.view);</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      error('The view object is missing from controller - ' + controllerName);</span>
+<span class="cstat-no" title="statement not covered" >      return false;</span>
+    }
+&nbsp;
+    // Add the controller function to the new controller object
+<span class="cstat-no" title="statement not covered" >    if(controller.controller) {</span>
+<span class="cstat-no" title="statement not covered" >      Rownd.controllers[controllerName].controller = controller.controller;</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      error('The controller function is missing from controller - ' + controllerName);</span>
+    }
+&nbsp;
+    // Add the actions to the new controller function
+<span class="cstat-no" title="statement not covered" >    if(controller.actions) {</span>
+<span class="cstat-no" title="statement not covered" >      Rownd.controllers[controllerName].on(controller.actions);</span>
+    }
+&nbsp;
+    // Run the controller
+<span class="cstat-no" title="statement not covered" >    Rownd.controllers[controllerName].controller(routeData);</span>
+<span class="cstat-no" title="statement not covered" >    return Rownd.controllers[controllerName];</span>
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, The function that fires a controller depending on what the current path is
+   * @param {newPath} newPath, The new path after clicking a link or using nav buttons
+   */
+  var navChange = function(newPath) {
+&nbsp;
+    // Update the previously stored hash
+    previousHash = currentHash;
+&nbsp;
+    // Get the new hash from param or function
+    <span class="missing-if-branch" title="else path not taken" >E</span>if(!newPath) {
+      currentHash = getNewHash();
+    } else {
+<span class="cstat-no" title="statement not covered" >      currentHash = newPath.split('?')[0];</span>
+    }
+&nbsp;
+    // Find the route from the routes object
+    var matchedRoute = findMatchingRoute(currentHash);
+&nbsp;
+    // If a matched route could be found; fire controller and set as active
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(matchedRoute) {
+&nbsp;
+      // Clear all prevously active routes
+<span class="cstat-no" title="statement not covered" >      clearActiveRoutes();</span>
+&nbsp;
+      // Set the matched route as active
+<span class="cstat-no" title="statement not covered" >      matchedRoute.active = true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute);</span>
+    } else {
+      // Checker to stop logging when running tests in Phantom browser
+      <span class="missing-if-branch" title="if path not taken" >I</span>if(typeof newPath === undefined) {
+        // Tell the user the new paths does not match any paths in the routes object
+<span class="cstat-no" title="statement not covered" >        error('Cannot find current route');</span>
+&nbsp;
+        // Clear all the active routes
+<span class="cstat-no" title="statement not covered" >        clearActiveRoutes();</span>
+      }
+    }
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @description, Adds a new route to the routes array
+   * @param {String} path, The path of the given route
+   * @param {String} controller, The name of the controller for the specified route
+   */
+  var addRoute = <span class="fstat-no" title="function not covered" >function(path, controller) {</span>
+&nbsp;
+    // If the user has a blank path assume base url
+<span class="cstat-no" title="statement not covered" >    if(path === '') {</span>
+<span class="cstat-no" title="statement not covered" >      path = '/';</span>
+    }
+&nbsp;
+    // Check if the path property exists
+<span class="cstat-no" title="statement not covered" >    if(!path) {</span>
+<span class="cstat-no" title="statement not covered" >      error('Path value is missing from a route object');</span>
+    }
+&nbsp;
+    // Check if the name of the controller is given
+<span class="cstat-no" title="statement not covered" >    if(!controller) {</span>
+<span class="cstat-no" title="statement not covered" >      error('Controller value is missing from a route object');</span>
+    } else <span class="cstat-no" title="statement not covered" >if(controller.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >      error('Controller value is empty in a route object');</span>
+    }
+    // Push new route to the routes array
+<span class="cstat-no" title="statement not covered" >    routes.push({'path': path, 'controller': controller});</span>
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @param  {object} route, The object that contains path and the controller name
+   */
+  Rownd.createRoute = <span class="fstat-no" title="function not covered" >function(route) {</span>
+    // Add the new route values to the route object
+<span class="cstat-no" title="statement not covered" >    return addRoute(route.path, route.controller);</span>
+  };
+&nbsp;
+&nbsp;
+  /**
+   * @param  {String} controllerName, The name of the controller given
+   * @param  {Object} controller, The controller object that contains the view, controller and action objects
+   */
+  Rownd.createController = <span class="fstat-no" title="function not covered" >function(controllerName, controllerObject) {</span>
+    // Initialise the controller
+<span class="cstat-no" title="statement not covered" >    accessableControllers[controllerName] = controllerObject;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return accessableControllers[controllerName];</span>
+  };
+&nbsp;
+  /**
+   * @description, Sets up the helpers object so it's ready to be used
+   */
+  Rownd.Helpers = (<span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >    return {};</span>
+  });
+&nbsp;
+  /**
+   * @description, Allow the access of all available routes for debugging in the console
+   */
+  Rownd.routes = routes;
+&nbsp;
+  /**
+   * @description, Listens to when there was a hashchange made when there is no history mode enabled
+   */
+  window.addEventListener('hashchange', <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    if(!config.useHistory || !window.history) {</span>
+<span class="cstat-no" title="statement not covered" >      navChange();</span>
+    }
+  }, false);
+&nbsp;
+&nbsp;
+  /**
+   * @description, Initializes and runs Rownd
+   */
+  var hasDomContentLoaded = false;
+  var initFinished = false;
+&nbsp;
+  var initialize = function() {
+    info('Initializing Rownd');
+    // Need to somehow auto update number
+    <span class="missing-if-branch" title="else path not taken" >E</span>if(config.showVersion){
+      info('Running Rownd v0.2.0');
+    }
+&nbsp;
+    // Function for loading new page
+    navChange();
+&nbsp;
+    // TODO: Add history mode
+  };
+&nbsp;
+  // Used to detect init of page for &gt; ie8
+  document.addEventListener('DOMContentLoaded', function() {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(!initFinished) {
+<span class="cstat-no" title="statement not covered" >      initialize();</span>
+<span class="cstat-no" title="statement not covered" >      initFinished = true;</span>
+    }
+    hasDomContentLoaded = true;
+  });
+&nbsp;
+  // Used to detect init of page for &lt; ie9
+  <span class="missing-if-branch" title="else path not taken" >E</span>if(!hasDomContentLoaded) {
+    document.addEventListener('readystatechange', function() {
+      if(!initFinished) {
+        initialize();
+        initFinished = true;
+      }
+    }, false);
+  }
+&nbsp;
+&nbsp;
+}(this.Rownd = this.Rownd || {}));</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Dec 31 2015 17:15:47 GMT+0000 (GMT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
