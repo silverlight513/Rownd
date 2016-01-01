@@ -21,7 +21,7 @@
   };
 
   // Namespace to store controllers upon set up
-  Rownd.controllers = {};
+  Rownd.ractiveControllers = {};
 
 
   /**
@@ -257,11 +257,11 @@
     }
 
     // Create a namespace for the conroller in Rownd
-    Rownd.controllers[controllerName] = {};
+    Rownd.ractiveControllers[controllerName] = {};
 
     // Generate and add the template to the controller using the view object if present
     if(controller.view) {
-      Rownd.controllers[controllerName] = Rownd.generateTemplate(controller.view);
+      Rownd.ractiveControllers[controllerName] = Rownd.generateTemplate(controller.view);
     } else {
       error('The view object is missing from controller - ' + controllerName);
       return false;
@@ -269,19 +269,19 @@
 
     // Add the controller function to the new controller object
     if(controller.controller) {
-      Rownd.controllers[controllerName].controller = controller.controller;
+      Rownd.ractiveControllers[controllerName].controller = controller.controller;
     } else {
       error('The controller function is missing from controller - ' + controllerName);
     }
 
     // Add the actions to the new controller function
     if(controller.actions) {
-      Rownd.controllers[controllerName].on(controller.actions);
+      Rownd.ractiveControllers[controllerName].on(controller.actions);
     }
 
     // Run the controller
-    Rownd.controllers[controllerName].controller(routeData);
-    return Rownd.controllers[controllerName];
+    Rownd.ractiveControllers[controllerName].controller(routeData);
+    return Rownd.ractiveControllers[controllerName];
   };
 
 
@@ -315,14 +315,11 @@
 
       runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute);
     } else {
-      // Checker to stop logging when running tests in Phantom browser
-      if(typeof newPath === undefined) {
-        // Tell the user the new paths does not match any paths in the routes object
-        error('Cannot find current route');
+      // Tell the user the new paths does not match any paths in the routes object
+      error('Cannot find current route');
 
-        // Clear all the active routes
-        clearActiveRoutes();
-      }
+      // Clear all the active routes
+      clearActiveRoutes();
     }
   };
 
@@ -386,9 +383,10 @@
   });
 
   /**
-   * @description, Allow the access of all available routes for debugging in the console
+   * @description, Allow the access of all available routes and controllers for debugging and testing
    */
   Rownd.routes = routes;
+  Rownd.controllers = accessableControllers;
 
   /**
    * @description, Listens to when there was a hashchange made when there is no history mode enabled

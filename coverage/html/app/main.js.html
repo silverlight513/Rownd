@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.94% </span>
+        <span class="strong">56.21% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>81/153</span>
+        <span class='fraction'>86/153</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.3% </span>
+        <span class="strong">41.11% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>38/92</span>
+        <span class='fraction'>37/90</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.19% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>16/21</span>
+        <span class='fraction'>18/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">52.94% </span>
+        <span class="strong">56.21% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>81/153</span>
+        <span class='fraction'>86/153</span>
       </div>
     </div>
   </div>
@@ -482,9 +482,7 @@
 437
 438
 439
-440
-441
-442</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+440</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -514,8 +512,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -670,7 +668,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -804,11 +802,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -859,9 +854,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -874,6 +869,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -948,7 +944,7 @@
   };
 &nbsp;
   // Namespace to store controllers upon set up
-  Rownd.controllers = {};
+  Rownd.ractiveControllers = {};
 &nbsp;
 &nbsp;
   /**
@@ -1110,8 +1106,8 @@
   /**
    * @description, Loops through the routes array and clears all routes to be non-active
    */
-  var clearActiveRoutes = <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >    for (var i = routes.length - 1; i &gt;= 0; i--) {</span>
+  var clearActiveRoutes = function() {
+    for (var i = routes.length - 1; i &gt;= 0; i--) {
 <span class="cstat-no" title="statement not covered" >      if(routes[i].active) {</span>
 <span class="cstat-no" title="statement not covered" >        routes[i].active = false;</span>
       }
@@ -1184,11 +1180,11 @@
     }
 &nbsp;
     // Create a namespace for the conroller in Rownd
-<span class="cstat-no" title="statement not covered" >    Rownd.controllers[controllerName] = {};</span>
+<span class="cstat-no" title="statement not covered" >    Rownd.ractiveControllers[controllerName] = {};</span>
 &nbsp;
     // Generate and add the template to the controller using the view object if present
 <span class="cstat-no" title="statement not covered" >    if(controller.view) {</span>
-<span class="cstat-no" title="statement not covered" >      Rownd.controllers[controllerName] = Rownd.generateTemplate(controller.view);</span>
+<span class="cstat-no" title="statement not covered" >      Rownd.ractiveControllers[controllerName] = Rownd.generateTemplate(controller.view);</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      error('The view object is missing from controller - ' + controllerName);</span>
 <span class="cstat-no" title="statement not covered" >      return false;</span>
@@ -1196,19 +1192,19 @@
 &nbsp;
     // Add the controller function to the new controller object
 <span class="cstat-no" title="statement not covered" >    if(controller.controller) {</span>
-<span class="cstat-no" title="statement not covered" >      Rownd.controllers[controllerName].controller = controller.controller;</span>
+<span class="cstat-no" title="statement not covered" >      Rownd.ractiveControllers[controllerName].controller = controller.controller;</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      error('The controller function is missing from controller - ' + controllerName);</span>
     }
 &nbsp;
     // Add the actions to the new controller function
 <span class="cstat-no" title="statement not covered" >    if(controller.actions) {</span>
-<span class="cstat-no" title="statement not covered" >      Rownd.controllers[controllerName].on(controller.actions);</span>
+<span class="cstat-no" title="statement not covered" >      Rownd.ractiveControllers[controllerName].on(controller.actions);</span>
     }
 &nbsp;
     // Run the controller
-<span class="cstat-no" title="statement not covered" >    Rownd.controllers[controllerName].controller(routeData);</span>
-<span class="cstat-no" title="statement not covered" >    return Rownd.controllers[controllerName];</span>
+<span class="cstat-no" title="statement not covered" >    Rownd.ractiveControllers[controllerName].controller(routeData);</span>
+<span class="cstat-no" title="statement not covered" >    return Rownd.ractiveControllers[controllerName];</span>
   };
 &nbsp;
 &nbsp;
@@ -1242,14 +1238,11 @@
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      runController(matchedRoute.controller, accessableControllers[matchedRoute.controller], matchedRoute);</span>
     } else {
-      // Checker to stop logging when running tests in Phantom browser
-      <span class="missing-if-branch" title="if path not taken" >I</span>if(typeof newPath === undefined) {
-        // Tell the user the new paths does not match any paths in the routes object
-<span class="cstat-no" title="statement not covered" >        error('Cannot find current route');</span>
+      // Tell the user the new paths does not match any paths in the routes object
+      error('Cannot find current route');
 &nbsp;
-        // Clear all the active routes
-<span class="cstat-no" title="statement not covered" >        clearActiveRoutes();</span>
-      }
+      // Clear all the active routes
+      clearActiveRoutes();
     }
   };
 &nbsp;
@@ -1298,11 +1291,11 @@
    * @param  {String} controllerName, The name of the controller given
    * @param  {Object} controller, The controller object that contains the view, controller and action objects
    */
-  Rownd.createController = <span class="fstat-no" title="function not covered" >function(controllerName, controllerObject) {</span>
+  Rownd.createController = function(controllerName, controllerObject) {
     // Initialise the controller
-<span class="cstat-no" title="statement not covered" >    accessableControllers[controllerName] = controllerObject;</span>
+    accessableControllers[controllerName] = controllerObject;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return accessableControllers[controllerName];</span>
+    return accessableControllers[controllerName];
   };
 &nbsp;
   /**
@@ -1313,9 +1306,10 @@
   });
 &nbsp;
   /**
-   * @description, Allow the access of all available routes for debugging in the console
+   * @description, Allow the access of all available routes and controllers for debugging and testing
    */
   Rownd.routes = routes;
+  Rownd.controllers = accessableControllers;
 &nbsp;
   /**
    * @description, Listens to when there was a hashchange made when there is no history mode enabled
@@ -1372,7 +1366,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jan 01 2016 13:19:15 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jan 01 2016 14:16:15 GMT+0000 (GMT)
 </div>
 </div>
 <script src="../prettify.js"></script>

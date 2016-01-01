@@ -25,7 +25,7 @@ describe('Starting Rownd with configs', function() {
 describe('Initializing helpers', function() {
   it('should return an empty Object', function() {
     // assert.deepEqual(Rownd.Helpers(), {}, 'Helpers are not empty or undefined');
-    expect(Rownd.Helpers()).to.deep.equal({});
+    expect(Rownd.Helpers()).to.eql({});
   });
 });
 
@@ -69,5 +69,19 @@ describe('Creating an index route', function() {
 
   it('should have a matching path in the routes object', function() {
     expect(Rownd.routes[0].path).to.equal('/');
+  });
+});
+
+
+/**
+ * @description, Creating a basic controller
+ */
+describe('Creating an index controller', function() {
+  it('a new controller will exist', function() {
+    Rownd.createController('index', {
+      view: {template: 'index'},
+      controller: function() {}
+    });
+    expect(Rownd.controllers).to.have.any.keys('index');
   });
 });
