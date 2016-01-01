@@ -342,13 +342,16 @@
     // Check if the path property exists
     if(!path) {
       error('Path value is missing from a route object');
+      return false;
     }
 
     // Check if the name of the controller is given
-    if(!controller) {
+    if(typeof controller === 'undefined') {
       error('Controller value is missing from a route object');
+      return false;
     } else if(controller.length === 0) {
       error('Controller value is empty in a route object');
+      return false;
     }
     // Push new route to the routes array
     routes.push({'path': path, 'controller': controller});

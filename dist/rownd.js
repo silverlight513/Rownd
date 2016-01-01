@@ -1,6 +1,6 @@
 /*
- * rownd - v0.2.0 - 2015-12-31
- * By Jack Rimell - Copyright (c) 2015 Jack Rimell;
+ * rownd - v0.2.0 - 2016-01-01
+ * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -16949,13 +16949,16 @@
     // Check if the path property exists
     if(!path) {
       error('Path value is missing from a route object');
+      return false;
     }
 
     // Check if the name of the controller is given
-    if(!controller) {
+    if(typeof controller === 'undefined') {
       error('Controller value is missing from a route object');
+      return false;
     } else if(controller.length === 0) {
       error('Controller value is empty in a route object');
+      return false;
     }
     // Push new route to the routes array
     routes.push({'path': path, 'controller': controller});
