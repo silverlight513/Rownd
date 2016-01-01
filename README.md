@@ -7,7 +7,7 @@ Usage of this framework is free to use for private and commercial usage.
 
 ##Project Items Left to do
  - Create a documentation site
- - Create a github static page
+ - Create a github.io page
 
 ##Code Additions still to do
  - Hierarchical routes with parents
