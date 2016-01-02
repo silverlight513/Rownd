@@ -80,9 +80,9 @@ body, html {
   width: ~"calc(100% - 50px)";
   height: 70vh;
   padding: 25px;
-  background: -moz-linear-gradient(top, rgba(43, 56, 74,0.80) 0%, rgba(43, 56, 74,1) 80%, rgba(43, 56, 74,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(43, 56, 74,0.80) 0%,rgba(43, 56, 74,1) 80%,rgba(43, 56, 74,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(43, 56, 74,0.80) 0%,rgba(43, 56, 74,1) 80%,rgba(43, 56, 74,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-linear-gradient(top, rgba(43, 56, 64,0.80) 0%, rgba(43, 56, 64,1) 80%, rgba(43, 56, 64,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba( 43, 56, 64,0.80) 0%,rgba(43, 56, 64,1) 80%,rgba( 43, 56, 64,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba( 43, 56, 64,0.80) 0%,rgba(43, 56, 64,1) 80%,rgba( 43, 56, 64,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   font-family: 'Lato', sans-serif;
   position: relative;
   color: #FFF;
@@ -111,12 +111,17 @@ body, html {
       margin-left: 10px;
       margin-right: 10px;
       padding-bottom: 5px;
-      color: #9AA2A7;
+      a {
+        color: #9AA2A7;
+        text-decoration: none;
+      }
     }
 
     .highlighted {
-      color: #FFF;
       border-bottom: 2px solid @blue;
+      a {
+        color: #FFF;
+      }
     }
   }
 

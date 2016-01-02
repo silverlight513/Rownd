@@ -1011,11 +1011,11 @@ html {
   width: calc(100% - 50px);
   height: 70vh;
   padding: 25px;
-  background: -moz-linear-gradient(top, rgba(43, 56, 74, 0.8) 0%, #2b384a 80%, #2b384a 100%);
+  background: -moz-linear-gradient(top, rgba(43, 56, 64, 0.8) 0%, #2b3840 80%, #2b3840 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(43, 56, 74, 0.8) 0%, #2b384a 80%, #2b384a 100%);
+  background: -webkit-linear-gradient(top, rgba(43, 56, 64, 0.8) 0%, #2b3840 80%, #2b3840 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(43, 56, 74, 0.8) 0%, #2b384a 80%, #2b384a 100%);
+  background: linear-gradient(to bottom, rgba(43, 56, 64, 0.8) 0%, #2b3840 80%, #2b3840 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   font-family: 'Lato', sans-serif;
   position: relative;
@@ -1044,11 +1044,16 @@ html {
   margin-left: 10px;
   margin-right: 10px;
   padding-bottom: 5px;
+}
+.header .top-bar span a {
   color: #9AA2A7;
+  text-decoration: none;
 }
 .header .top-bar .highlighted {
-  color: #FFF;
   border-bottom: 2px solid #00ceaf;
+}
+.header .top-bar .highlighted a {
+  color: #FFF;
 }
 .header .title {
   position: absolute;
