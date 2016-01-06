@@ -1001,7 +1001,7 @@ html {
   Main Header section
  */
 .header {
-  width: 100%;
+  width: calc(100% - 50px);
   height: 70vh;
   padding: 25px;
   background: -moz-linear-gradient(top, rgba(43, 56, 64, 0.8) 0%, #2b3840 80%, #2b3840 100%);
@@ -1054,7 +1054,7 @@ html {
   top: 50%;
   margin-top: -37px;
   width: 100%;
-  max-width: 100vw;
+  max-width: calc(100vw - 50px);
   text-align: center;
   font-size: 54px;
   font-weight: 300;
@@ -1070,7 +1070,7 @@ html {
   top: 70%;
   text-align: center;
   width: 100%;
-  max-width: 100vw;
+  max-width: calc(100vw - 50px);
 }
 .header .main-info span {
   color: #00ceaf;
