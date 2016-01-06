@@ -6,7 +6,7 @@
 */
 
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -70,6 +70,7 @@ table {
 
 body, html {
   width: 100%;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 /*
@@ -82,7 +83,6 @@ body, html {
   background: -moz-linear-gradient(top, rgba(43, 56, 64,0.80) 0%, rgba(43, 56, 64,1) 80%, rgba(43, 56, 64,1) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, rgba( 43, 56, 64,0.80) 0%,rgba(43, 56, 64,1) 80%,rgba( 43, 56, 64,1) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, rgba( 43, 56, 64,0.80) 0%,rgba(43, 56, 64,1) 80%,rgba( 43, 56, 64,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  font-family: 'Lato', sans-serif;
   position: relative;
   color: #FFF;
 
@@ -100,9 +100,11 @@ body, html {
   }
 
   .top-bar {
-    width: 100%;
+    width: ~"calc(100% - 50px)";
     height: 22px;
-    font-weight: 400;
+    padding-right: 25px;
+    padding-left: 25px;
+    font-weight: 300;
     font-size: 14px;
 
     span {
@@ -129,6 +131,7 @@ body, html {
     top: 50%;
     margin-top: -37px;
     width: 100%;
+    max-width: 100vw;
     text-align: center;
     font-size: 54px;
     font-weight: 300;
@@ -146,6 +149,7 @@ body, html {
     top: 70%;
     text-align: center;
     width: 100%;
+    max-width: 100vw;
 
     span {
       color: @blue;
@@ -165,20 +169,57 @@ body, html {
   }
 }
 
-.about {
-  padding-top: 100px;
-  padding-bottom: 100px;
-
-  h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-  }
+hr {
+  height: 1px;
+  background-color: #CACACA;
+  border: none;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 section {
+  max-width: 350px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 0 auto;
+
+  p {
+    margin-top: 22px;
+    margin-bottom: 22px;
+    font-size: 20px;
+  }
+
   h2, h3 {
+    font-family: 'Ubuntu', sans-serif;
+    color: @blue;
+    text-rendering: optimizeLegibility;
     font-weight: 300;
+  }
+
+  h2 {
+    font-size: 42px;
+  }
+
+  h3 {
+    font-size: 34px;
+  }
+}
+
+@media(min-width: 700px) {
+  section {
+    max-width: 523px;
+  }
+}
+
+@media(min-width: 1000px) {
+  section {
+    max-width: 700px;
+  }
+}
+
+@media(min-width: 1200px) {
+  section {
+    max-width: 960px;
   }
 }
 
