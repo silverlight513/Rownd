@@ -1016,7 +1016,7 @@ html {
   width: 100%;
   height: 70vh;
   z-index: -1;
-  background-image: url('images/worms-head.jpg');
+  background-image: url('worms-head.jpg');
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -1104,17 +1104,25 @@ section p {
   font-size: 20px;
 }
 section h2,
-section h3 {
+section h3,
+section h4 {
   font-family: 'Ubuntu', sans-serif;
   color: #00ceaf;
   text-rendering: optimizeLegibility;
   font-weight: 300;
 }
 section h2 {
-  font-size: 42px;
+  font-size: 38px;
 }
 section h3 {
-  font-size: 34px;
+  font-size: 32px;
+}
+section h4 {
+  font-size: 28px;
+}
+section a {
+  color: #00ceaf;
+  text-decoration: none;
 }
 @media (min-width: 700px) {
   section {

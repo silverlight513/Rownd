@@ -4,13 +4,17 @@
   "description": "Gruntfile for Rownd-Docs",
   "main": "Gruntfile.js",
   "scripts": {
+    "imagemin": "imagemin -o 7 images/ ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Rimell",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-less": "^0.11.4",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "imagemin": "^4.0.0",
+    "imagemin-cli": "^2.1.0"
   },
   "dependencies": {
     "matchdep": "^0.3.0"

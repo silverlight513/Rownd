@@ -15,10 +15,18 @@ module.exports = function(grunt) {
       }
     },
 
+    cssmin: {
+      target: {
+        files: {
+          'style.min.css': ['style.css']
+        }
+      }
+    },
+
     watch: {
       less: {
         files: ['styles/*.less'],
-        tasks: ['less']
+        tasks: ['less', 'cssmin']
       }
     }
 
@@ -31,6 +39,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'less',
+    'cssmin',
     'watch']
   );
 
