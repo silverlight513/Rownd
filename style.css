@@ -1001,7 +1001,6 @@ html {
   Main Header section
  */
 .header {
-  width: calc(100% - 50px);
   height: 70vh;
   padding: 25px;
   background: -moz-linear-gradient(top, rgba(43, 56, 64, 0.8) 0%, #2b3840 80%, #2b3840 100%);
