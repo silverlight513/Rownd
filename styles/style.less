@@ -168,24 +168,19 @@ body, html {
   }
 }
 
-hr {
-  height: 1px;
-  background-color: #CACACA;
-  border: none;
-  margin-bottom: 50px;
-  margin-top: 50px;
-}
-
 section {
   max-width: 350px;
   padding-left: 50px;
   padding-right: 50px;
+  padding-bottom: 50px;
   margin: 0 auto;
+  border-bottom: 1px solid #DDD;
 
   p {
     margin-top: 22px;
     margin-bottom: 22px;
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.3;
   }
 
   h2, h3, h4 {
@@ -210,6 +205,14 @@ section {
   a {
     color: @blue;
     text-decoration: none;
+  }
+
+  code {
+    background-color: #DDD;
+  }
+
+  &.no-line {
+    border-bottom: none;
   }
 }
 
