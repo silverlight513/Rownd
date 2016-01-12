@@ -1025,10 +1025,9 @@ html {
   left: 0px;
 }
 .header .top-bar {
-  width: calc(100% - 50px);
+  width: 100%;
+  padding: 0px;
   height: 22px;
-  padding-right: 25px;
-  padding-left: 25px;
   font-weight: 300;
   font-size: 14px;
 }
@@ -1163,6 +1162,11 @@ section .doc-section {
   }
   .main-nav ul li {
     width: 200px;
+  }
+  .header .top-bar {
+    width: calc(100% - 50px);
+    padding-right: 25px;
+    padding-left: 25px;
   }
 }
 @media (min-width: 1000px) {
