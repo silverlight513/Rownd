@@ -1106,6 +1106,18 @@ html {
   border-bottom: 2px solid #00ceaf;
   cursor: pointer;
 }
+ul.styled-list {
+  padding-left: 22px;
+}
+ul.styled-list li {
+  line-height: 1.4;
+  list-style-position: inside;
+  list-style-type: initial;
+  margin-bottom: 10px;
+}
+ul.styled-list li .first {
+  font-weight: bold;
+}
 section {
   max-width: 350px;
   padding-left: 50px;
