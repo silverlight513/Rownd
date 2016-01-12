@@ -1091,13 +1091,13 @@ html {
   margin-top: 54px;
 }
 .main-nav ul {
-  width: 600px;
+  width: 100%;
   margin: 0 auto;
   display: table;
 }
 .main-nav ul li {
   display: inline-block;
-  width: 200px;
+  width: 33%;
   height: 80px;
   text-align: center;
   line-height: 80px;
@@ -1157,6 +1157,12 @@ section .doc-section {
 @media (min-width: 700px) {
   section {
     max-width: 523px;
+  }
+  .main-nav ul {
+    width: 600px;
+  }
+  .main-nav ul li {
+    width: 200px;
   }
 }
 @media (min-width: 1000px) {

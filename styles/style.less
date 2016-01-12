@@ -174,12 +174,12 @@ body, html {
   margin-top: 54px;
 
   ul {
-    width: 600px;
+    width: 100%;
     margin: 0 auto;
     display: table;
     li {
       display: inline-block;
-      width: 200px;
+      width: 33%;
       height: 80px;
       text-align: center;
       line-height: 80px;
@@ -247,18 +247,29 @@ section {
   }
 }
 
+// tablet
 @media(min-width: 700px) {
   section {
     max-width: 523px;
   }
+  .main-nav {
+    ul {
+      width: 600px;
+      li {
+        width: 200px;
+      }
+    }
+  }
 }
 
+// small desktop
 @media(min-width: 1000px) {
   section {
     max-width: 700px;
   }
 }
 
+// large desktop
 @media(min-width: 1200px) {
   section {
     max-width: 960px;
