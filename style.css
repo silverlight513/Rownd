@@ -1089,9 +1089,7 @@ section {
   max-width: 350px;
   padding-left: 50px;
   padding-right: 50px;
-  padding-bottom: 50px;
   margin: 0 auto;
-  border-bottom: 1px solid #DDD;
 }
 section p {
   margin-top: 22px;
@@ -1123,14 +1121,16 @@ section h3 {
   font-size: 32px;
 }
 section h4 {
-  font-size: 28px;
+  font-size: 24px;
 }
 section a {
   color: #00ceaf;
   text-decoration: none;
 }
-section.no-line {
-  border-bottom: none;
+section .doc-section {
+  margin-bottom: 82px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #DDD;
 }
 @media (min-width: 700px) {
   section {
