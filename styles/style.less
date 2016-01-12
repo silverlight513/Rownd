@@ -168,6 +168,31 @@ body, html {
   }
 }
 
+.main-nav {
+  width: 100%;
+  margin-bottom: 124px;
+  margin-top: 54px;
+
+  ul {
+    width: 600px;
+    margin: 0 auto;
+    display: table;
+    li {
+      display: inline-block;
+      width: 200px;
+      height: 80px;
+      text-align: center;
+      line-height: 80px;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-bottom: 2px solid @blue;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 section {
   max-width: 350px;
   padding-left: 50px;

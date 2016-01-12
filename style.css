@@ -1085,6 +1085,28 @@ html {
 .header .main-info span:before {
   font-size: 32px;
 }
+.main-nav {
+  width: 100%;
+  margin-bottom: 124px;
+  margin-top: 54px;
+}
+.main-nav ul {
+  width: 600px;
+  margin: 0 auto;
+  display: table;
+}
+.main-nav ul li {
+  display: inline-block;
+  width: 200px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  border-bottom: 2px solid transparent;
+}
+.main-nav ul li:hover {
+  border-bottom: 2px solid #00ceaf;
+  cursor: pointer;
+}
 section {
   max-width: 350px;
   padding-left: 50px;
