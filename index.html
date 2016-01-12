@@ -46,9 +46,9 @@
     <section>
       <nav class="main-nav">
         <ul>
-          <li>About</li>
-          <li>Docs</li>
-          <li>Tutorials</li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#set-up">Docs</a></li>
+          <li><a href="">Tutorials</a></li>
         </ul>
       </nav>
     </section>
@@ -56,13 +56,15 @@
     <!-- // About // -->
     <section>
       <div class="doc-section">
-        <h2>What is Rownd.js?</h2>
-        <p>
-        Rownd.js is a quick and simple Front-end framework. Lightweight and easier to build in than other MVC frameworks such as Angular.js or Ember.js.
-        <br />
-        It uses <a href="http://www.ractivejs.org/">Ractive.js</a> at it's heart which makes rendering pages instant and allows two way data-binding so you can
-        be as dynamic as possible with your interfaces.
-        </p>
+        <div id="about">
+          <h2>What is Rownd.js?</h2>
+          <p>
+          Rownd.js is a quick and simple Front-end framework. Lightweight and easier to build in than other MVC frameworks such as Angular.js or Ember.js.
+          <br />
+          It uses <a href="http://www.ractivejs.org/">Ractive.js</a> at it's heart which makes rendering pages instant and allows two way data-binding so you can
+          be as dynamic as possible with your interfaces.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -70,7 +72,12 @@
     <section>
       <div class="doc-section">
         <div id="set-up">
-          <h3>Set Up</h3>
+          <a href="#set-up">
+            <h3>
+              <span class="entypo-link page-anchor"></span>
+              Set Up
+            </h3>
+          </a>
           <p>
           Setting up Rownd can be done either with the <a href="#startupkit">Start Up Kit</a> or by getting it directly from npm.
           Using the Start Up Kit sets everything up for you. If you're setting this up without the Start Up kit then follow the guide below.
@@ -132,12 +139,6 @@
         </div>
       </div>
       <div class="doc-section">
-        <div id="controllers">
-          <h3>Controllers</h3>
-
-        </div>
-      </div>
-      <div class="doc-section">
         <div id="templates">
           <h3>Templates</h3>
           <p>
@@ -157,6 +158,49 @@
             <li>data - Any data to bind to the template. Must be valid JavaScript</li>
             <li>append - Uses the append value in Ractive templates</li>
           </ul>
+        </div>
+      </div>
+      <div class="doc-section">
+        <div id="controllers">
+          <h3>Controllers</h3>
+          <p>
+          Controllers are where most of the logic for your application will be based. Some small logic may be in the template or in the use of helpers. To create a controller
+          for use with a route there is the <code>rwnd.createController()</code> function. This function takes two parameters, the first being a String containing the name of
+          the controller to reference it in the <code>rwnd.createRoute()</code> function and then an Object which will contain two items required and one optional item.
+          </p>
+          <p>
+          The first required item inside the object is a view Object which is essentially uses the <code>rwnd.generateTemplate()</code> function to load the first view for
+          your controller. The second item is a function with the key controller. This function has one parameter which is the route data of the current route. The last item
+          is the optional actions object which can contain a range of functions which can be added to the template set in the view object.
+          </p>
+        </div>
+        <div id="route-data">
+          <h4>Route Data</h4>
+          <p>
+          To get the current route data add the parameter routeData to the controller function and then you can use that variable to get the current path and the name of the
+          controller you're currently using.
+          </p>
+        </div>
+        <div id="view">
+          <h4>View Object</h4>
+          <p>
+          The view object is what Rownd uses to load in a template when a new route is hit and the controller is fired. This view object is ran through the generateTemplate
+          function which means you can add data to the template by adding an object called data inside this view object.
+          </p>
+        </div>
+        <div id="actions">
+          <h4>Actions Object</h4>
+          <p>
+          The actions object is used to give functionality to the template. Inside here you can write functions that are accessable from the template.
+          </p>
+        </div>
+        <div id="using-data-binding">
+          <h4>Using Data-Binding</h4>
+          <p>
+            To use data binding in the controller you can use the Ractive <a href="http://docs.ractivejs.org/latest/ractive-get">get</a> and
+            <a href="http://docs.ractivejs.org/latest/ractive-set">set</a> functions. Because the view is directly rendered with Ractive we can use all of Ractive's
+            instance methods. Which you can find all the documentation <a href="http://docs.ractivejs.org/latest/ractive-add">here</a>.
+          </p>
         </div>
       </div>
     </section>

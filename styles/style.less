@@ -169,8 +169,8 @@ body, html {
 
 .main-nav {
   width: 100%;
-  margin-bottom: 124px;
-  margin-top: 54px;
+  margin-bottom: 42px;
+  margin-top: 32px;
 
   ul {
     width: 100%;
@@ -228,6 +228,19 @@ section {
 
   h3 {
     font-size: 32px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover .page-anchor {
+      opacity: 1;
+    }
+
+    .page-anchor {
+      position: absolute;
+      left: -40px;
+      transition: all 0.5s ease;
+      opacity: 0;
+    }
   }
 
   h4 {
@@ -252,6 +265,8 @@ section {
     max-width: 523px;
   }
   .main-nav {
+    margin-bottom: 124px;
+    margin-top: 54px;
     ul {
       width: 600px;
       li {
