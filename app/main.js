@@ -1,6 +1,6 @@
 /**
  *
- * main.js holds all of the code for the Rownd project
+ * main.js holds all of the code for the Rownd.js project
  *
  * Author: Jack Rimell @silverlight513
  *
@@ -320,6 +320,8 @@
 
       // Clear all the active routes
       clearActiveRoutes();
+
+      Rownd.routeNotFound();
     }
   };
 
@@ -381,6 +383,20 @@
   Rownd.Helpers = (function(){
     return {};
   });
+
+
+  /**
+   *
+   * @param {Function} userFunction, The function that the user wants to fire when no route is found
+   * @return, The function that was passed to routeNotFound
+   */
+  Rownd.routeNotFound = function(userFunction){
+    if(userFunction){
+      userFunction();
+    } else {
+      return false;
+    }
+  };
 
   /**
    * @description, Allow the access of all available routes and controllers for debugging and testing
