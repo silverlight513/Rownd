@@ -15,5 +15,4 @@ Usage of this framework is free to use for private and commercial usage.
  - Create a Ractive compiler for Rownd.js to compile handlebars
 
 ##Project Docs still to do
- - underline in icon links
  - create a start up kit page
