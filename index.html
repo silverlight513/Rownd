@@ -9,6 +9,7 @@
     <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/monokai-sublime.css">
     <link rel="prefetch" href="worms-head.jpg">
   </head>
   <body>
@@ -57,12 +58,17 @@
     <section>
       <div class="doc-section">
         <div id="about">
-          <h2>What is Rownd.js?</h2>
+          <a href="#about">
+            <h2>
+              <span class="entypo-link page-anchor"></span>
+              What is Rownd.js?
+            </h2>
+          </a>
           <p>
-          Rownd.js is a quick and simple Front-end framework. Lightweight and easier to build in than other MVC frameworks such as Angular.js or Ember.js.
+          Rownd.js is a quick and simple Front-end framework. Lightweight and easier to build with than other MVC frameworks such as Angular.js or Ember.js.
           <br />
           It uses <a href="http://www.ractivejs.org/">Ractive.js</a> at it's heart which makes rendering pages instant and allows two way data-binding so you can
-          be as dynamic as possible with your interfaces.
+          be as dynamic as possible and bring the best UX to your users.
           </p>
         </div>
       </div>
@@ -79,44 +85,84 @@
             </h3>
           </a>
           <p>
-          Setting up Rownd can be done either with the <a href="#startupkit">Start Up Kit</a> or by getting it directly from npm.
-          Using the Start Up Kit sets everything up for you. If you're setting this up without the Start Up kit then follow the guide below.
+          Setting up Rownd can be done, either with the <a href="#startupkit">Start Up Kit</a> or by getting it directly from npm.
+          Using the Start Up Kit sets everything up for you. If you're setting this up with npm then follow the guide below if you need some guidance.
           </p>
           <p>
           If you haven't used Rownd.js before we highly advise you use the start up kit to get started. The start up kit is just the bare bones you need to get started
-          with a coulpe example code so you can see where everything goes.
+          with a some example code so you can see where everything goes and how things are put together in Rownd.js.
           </p>
         </div>
         <div id="install">
-          <h4>Install</h4>
-          <p>To install Rownd.js simply install it via npm using the command <code>npm install rownd --save</code></p>
+          <h4>Installing with npm</h4>
+          <p>To install Rownd.js simply install it via npm using the command <code class="inline">npm install rownd --save</code></p>
         </div>
         <div id="base-structure">
           <h4>Base Structure</h4>
           <p>
-          To get Rownd.js working you're going to need to set up an index route, controller and view. First start by creating a Routes.js and create a new isntance of
-          Rownd with your own config using the start function - <code>var rwnd = Rownd.start({debug: false});</code>. This is how you change your config options, just
-          give a config a value of your choosing and add it to the object in the start function.
+          To set up your Rownd.js application, you're going to need to create a couple files and then link them up into your index.html. You can do this with a build tool
+          or just link all your files up, which ever you prefer. The first file you're going to need is the Routes.js file. In here you will start the Rownd instance and
+          link up all your routes. This file should always be the first file to be linked in your index.html.
           </p>
           <p>
-          Now that you have the start function going we need to create a route. To create a route type out <code>rwnd.createRoute({'controller' : 'index','path' : ''});</code>.
-          When creating a route you will need to specify the path of the route (in this case empty string denotes root). You also need to specify the controller that will be
-          used for that route, here we've used index as the name for the index controller.
+          To start Rownd, you can use the <code class="inline">Rownd.start()</code> function. You can pass an object into this function to change the default parameters if
+          you wish to. After that you're going to need to create your first route. To create a route you use the <code class="inline">Rownd.createRoute()</code> function
+          within which you need to specifiy your path and controller for that path.
           </p>
+          <pre>
+            <code class="js">
+  var rwnd = Rownd.start({
+    'debug': true,
+    'hideInfo': false,
+    'showVersion': true
+  });
+
+  rwnd.createRoute({
+    'path': '',
+    'controller': 'index'
+  });
+            </code>
+          </pre>
           <p>
-          Your route is set up but now you need a controller, to do that you'll need to use the createController function and pass it a name and an object which contains a view
-          object and a controller object. E.g. <code>rwnd.createController('index', {'view': {'template': 'index'},'controller': function(){}});</code>. This will create an
-          index controller for you. Inside the view object you specifiy a template which we've called index. This needs to match up to a handlebars file with the same name. Then
-          we have a function called controller which will contain all of the logic for that route.
+          The next file you're going to need to create is your controller file. In here you can create your first controller using the <code class="inline">Rownd.createController()</code>.
+          When creating a controller you need to specify the name and the controller object.
           </p>
+          <pre>
+            <code class="js">
+  rwnd.createController('index', function() {
+
+    // Specifiy the initial template
+    'view': {
+      'template': 'index'
+    },
+
+    // All your logic goes here
+    'controller': function(routeData){
+    },
+
+    //  All the template logic functions
+    'actions': {
+      'concat': funtion(wordOne, wordTwo) {
+        return wordOne + wordTwo;
+      }
+    }
+  });
+            </code>
+          </pre>
           <p>
-          The final step is to make the handlebars file called <code>index.html</code> so that it matches the name in the view.
+          The last step is to create a view using handlebars. To compile to handlebars files to Ractive templates we use the Rownd-Ractive-compiler. Which can be obtained
+          through npm.
           </p>
         </div>
       </div>
       <div class="doc-section">
         <div id="routes">
-          <h3>Routes</h3>
+          <a href="#routes">
+            <h3>
+              <span class="entypo-link page-anchor"></span>
+              Routes
+            </h3>
+          </a>
           <p>
           In Rownd, routes are used to load individual pages and controllers into existence. Soon we will be adding in hierarchical routes but right now they're just plain and
           simple.
@@ -125,7 +171,7 @@
         <div id="creating-routes">
           <h4>Creating Routes</h4>
           <p>
-          To create a route add you need to use the <code>rwnd.createRoute()</code> function. To use this function you simply add it to your routes file and pass it an object
+          To create a route you will need to use the <code class="inline">Rownd.createRoute()</code> function. To use this function you simply add it to your routes file and pass it an object
           with two parameters; controller and path. The controller item must be the same as the name of the controller you want to use and the path is the url you would like
           to use for this new page.
           </p>
@@ -133,14 +179,19 @@
         <div id="missing-routes">
           <h4>404 Pages</h4>
           <p>
-          To create a 404 page you will need to utilize the <code>rwnd.routeNotFound()</code> function. This function will fire whenever a route cannot be found. You can run
+          To create a 404 page you will need to utilize the <code class="inline">Rownd.routeNotFound()</code> function. This function will fire whenever a route cannot be found. You can run
           anything you want inside this function but we suggest serving up a nice 404 page.
           </p>
         </div>
       </div>
       <div class="doc-section">
         <div id="templates">
-          <h3>Templates</h3>
+          <a href="#templates">
+            <h3>
+              <span class="entypo-link page-anchor"></span>
+              Templates
+            </h3>
+          </a>
           <p>
           Templates in Rownd are handlebar files that are rendered by <a href="http://www.ractivejs.org/">Ractive</a> into html. Because they are rendered by ractive they are
           extremely quick to render. They also allow for two way data-binding between the controller and the template.
@@ -149,27 +200,32 @@
         <div id="generate-template">
           <h4>generateTemplate()</h4>
           <p>
-          If you want to load in a partial template or render a whole new template on the current page you can use the <code>rwnd.generateTemplate()</code> function.
-          <code>generateTemplate()</code> requires one parameter which is an object which will hold all of the parameters needed.
+          If you want to load in a partial template or render a whole new template on the current page you can use the <code class="inline">Rownd.generateTemplate()</code> function.
+          <code>generateTemplate()</code> only requires an object as it's parameter with the following contents.
           </p>
           <ul class="styled-list">
             <li><span class="first">template</span> - Name of the new template</li>
-            <li><span class="first">outlet</span> - The location of the template. Leave blank if you want to replace the current template with the new one</li>
-            <li><span class="first">data</span> - Any data to bind to the template. Must be valid JavaScript</li>
-            <li><span class="first">append</span> - Uses the append value in Ractive templates</li>
+            <li><span class="first">outlet</span> - The location of the template. Leave out if you want to replace the whole document with the new template</li>
+            <li><span class="first">data</span> - If you want to add any intial data when loading the template</li>
+            <li><span class="first">append</span> - Append new template to the selected outlet or overwrites the outlet specified</li>
           </ul>
         </div>
       </div>
       <div class="doc-section">
         <div id="controllers">
-          <h3>Controllers</h3>
+          <a href="#controllers">
+            <h3>
+            <span class="entypo-link page-anchor"></span>
+            Controllers
+            </h3>
+          </a>
           <p>
-          Controllers are where most of the logic for your application will be based. Some small logic may be in the template or in the use of helpers. To create a controller
-          for use with a route there is the <code>rwnd.createController()</code> function. This function takes two parameters, the first being a String containing the name of
-          the controller to reference it in the <code>rwnd.createRoute()</code> function and then an Object which will contain two items required and one optional item.
+          Controllers are where most of the logic for your application will be based. Some small logic may be in the template actions or in your helper library. To create a controller
+          for use with a route there is the <code class="inline">Rownd.createController()</code> function. This function takes two parameters, the first being a String containing the name of
+          the controller to reference it in the <code class="inline">Rownd.createRoute()</code> function and then an Object which will contain two items required and one optional item.
           </p>
           <p>
-          The first required item inside the object is a view Object which is essentially uses the <code>rwnd.generateTemplate()</code> function to load the first view for
+          The first required item inside the object is a view Object which is essentially uses the <code class="inline">Rownd.generateTemplate()</code> function to load the first view for
           your controller. The second item is a function with the key controller. This function has one parameter which is the route data of the current route. The last item
           is the optional actions object which can contain a range of functions which can be added to the template set in the view object.
           </p>
@@ -203,16 +259,49 @@
           </p>
         </div>
       </div>
+      <div class="doc-section">
+        <div id="helpers">
+          <a href="#helpers">
+            <h3>
+            <span class="entypo-link page-anchor"></span>
+            Helpers
+            </h3>
+          </a>
+          <p>
+          Instead of using directives and injecting them like Angular.js, in Rownd you have the Helpers object. The Helpers object contains a range of functions created by
+          simply adding an item to the Helpers object. Helpers can be used in any controller as many times as you want. Below is an example of creating a Helper using the
+          Rownd instnace we set up at the top.
+          </p>
+          <pre>
+            <code class="js">
+  rwnd.Helpers.stringValidator = function(stringOne, stringTwo){
+    return stringOne === stringTwo;
+  };
+            </code>
+          </pre>
+        </div>
+      </div>
     </section>
 
     <!-- // Credits // -->
-    <section class="no-line">
-      <h3>Credits</h3>
+    <section class="no-line" id="credits">
+      <a href="#credits">
+        <h3>
+          <span class="entypo-link page-anchor"></span>
+          Credits
+        </h3>
+      </a>
       <ul class="styled-list">
         <li>Original Author - <a href="https://twitter.com/silverlight513">Jack Rimell</a></li>
         <li>Header Photo - <a href="http://www.sronicle.com">Shaun Ronicle</a></li>
       </ul>
     </section>
+
+
+
+    <!-- // Code Highlighting // -->
+    <script src="libs/hl.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 
     <!-- // Google Analytics // -->
