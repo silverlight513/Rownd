@@ -111,13 +111,13 @@
           </p>
           <pre>
             <code class="js">
-  var rwnd = Rownd.start({
+  var rnd = Rownd.start({
     'debug': true,
     'hideInfo': false,
     'showVersion': true
   });
 
-  rwnd.createRoute({
+  rnd.createRoute({
     'path': '',
     'controller': 'index'
   });
@@ -129,7 +129,7 @@
           </p>
           <pre>
             <code class="js">
-  rwnd.createController('index', function() {
+  rnd.createController('index', function() {
 
     // Specifiy the initial template
     'view': {
@@ -220,15 +220,32 @@
             </h3>
           </a>
           <p>
-          Controllers are where most of the logic for your application will be based. Some small logic may be in the template actions or in your helper library. To create a controller
-          for use with a route there is the <code class="inline">Rownd.createController()</code> function. This function takes two parameters, the first being a String containing the name of
-          the controller to reference it in the <code class="inline">Rownd.createRoute()</code> function and then an Object which will contain two items required and one optional item.
+          Controllers are where most of the logic for your application will be based. Some small logic may be in the template actions or in your helper library. Creating a controller is
+          simple, just use the <code class="inline">Rownd.createController()</code> function and match up the name of the controller with the name used in the
+          <code class="inline">Rownd.createRoute()</code> function. Below is an example controller:
           </p>
-          <p>
-          The first required item inside the object is a view Object which is essentially uses the <code class="inline">Rownd.generateTemplate()</code> function to load the first view for
-          your controller. The second item is a function with the key controller. This function has one parameter which is the route data of the current route. The last item
-          is the optional actions object which can contain a range of functions which can be added to the template set in the view object.
-          </p>
+          <pre>
+            <code class="js">
+  rwnd.createController('index', function() {
+
+    // Specifiy the initial template
+    'view': {
+      'template': 'index'
+    },
+
+    // All your logic goes here
+    'controller': function(routeData){
+    },
+
+    //  All the template logic functions
+    'actions': {
+      'concat': funtion(wordOne, wordTwo) {
+        return wordOne + wordTwo;
+      }
+    }
+  });
+            </code>
+          </pre>
         </div>
         <div id="route-data">
           <h4>Route Data</h4>
@@ -274,7 +291,7 @@
           </p>
           <pre>
             <code class="js">
-  rwnd.Helpers.stringValidator = function(stringOne, stringTwo){
+  rnd.Helpers.stringValidator = function(stringOne, stringTwo){
     return stringOne === stringTwo;
   };
             </code>
@@ -292,7 +309,7 @@
         </h3>
       </a>
       <ul class="styled-list">
-        <li>Original Author - <a href="https://twitter.com/silverlight513">Jack Rimell</a></li>
+        <li>Rownd Creator - <a href="https://twitter.com/silverlight513">Jack Rimell</a></li>
         <li>Header Photo - <a href="http://www.sronicle.com">Shaun Ronicle</a></li>
       </ul>
     </section>
