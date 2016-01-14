@@ -7,7 +7,7 @@ Usage of this framework is free to use for private and commercial usage.
 
 ##Code Additions still to do
  - Hierarchical routes with parents
- - Add in History mode so no need for the #
+ - Add in History mode so no need for the # in the url
 
 ##Projects for Rownd still to do
  - Finish creating the start up kit and add a download link from github (different version with grunt, gulp and npm as build tools)
