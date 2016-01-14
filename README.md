@@ -11,12 +11,10 @@ Usage of this framework is free to use for private and commercial usage.
  - Add in routeNotFound() function
 
 ##Projects for Rownd still to do
- - Finish creating the start up kit and add a download link from github
+ - Finish creating the start up kit and add a download link from github (different version with grunt, gulp and npm as build tools)
  - Create a todo app using start up kit to show MVC capabilities
  - Create a Ractive compiler for Rownd.js to compile handlebars
 
 ##Project Docs still to do
- - Style lists
- - Add Controller docs
- - Add Rownd Vars to docs
  - underline in icon links
+ - create a start up kit page
