@@ -1,16 +1,13 @@
 {
   "name": "rownd",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Package dependencies for the rownd project",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Rimell",
-  "license": "NONE",
-  "dependencies": {
-    "ractive": "git@github.com:ractivejs/ractive.git#v0.7.3"
-  },
+  "license": "MIT",
   "devDependencies": {
     "chai": "^3.4.1",
     "grunt": "^0.4.5",
@@ -25,6 +22,7 @@
     "karma-phantomjs-launcher": "^0.2.2",
     "matchdep": "^0.3.0",
     "mocha": "^2.3.4",
-    "phantomjs": "^1.9.19"
+    "phantomjs": "^1.9.19",
+    "ractive": "git@github.com:ractivejs/ractive.git#v0.7.3"
   }
 }
