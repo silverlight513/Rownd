@@ -67,8 +67,8 @@
           <p>
           Rownd.js is a quick and simple Front-end framework. Lightweight and easier to build with than other MVC frameworks such as Angular.js or Ember.js.
           <br />
-          It uses <a href="http://www.ractivejs.org/">Ractive.js</a> at it's heart which makes rendering pages instant and allows two way data-binding so you can
-          be as dynamic as possible and bring the best UX to your users.
+          It uses <a href="http://www.ractivejs.org/">Ractive.js</a> at it's heart which makes rendering pages instant and allows two way data-binding with a
+          pre-defined and user tested model API.
           </p>
         </div>
       </div>
@@ -85,7 +85,7 @@
             </h3>
           </a>
           <p>
-          Setting up Rownd.js can be very simple, just download the <a href="http://silverlight513.github.io/Rownd-Start-up-kit/">Start up kit</a> and you're off.
+          Setting up Rownd.js is very simple, just download the <a href="http://silverlight513.github.io/Rownd-Start-up-kit/">Start up kit</a> and you're off.
           </p>
           <p>
           Of course you don't have to use the Start up kit. You can just put it all together yourself. Just donwload Rownd and the Rownd template compiler. Put it all
@@ -101,14 +101,8 @@
         <div id="base-structure">
           <h4>Base Structure</h4>
           <p>
-          To set up your Rownd.js application, you're going to need to create a couple files and then link them up into your index.html. You can do this with a build tool
-          or just link all your files up, which ever you prefer. The first file you're going to need is the Routes.js file. In here you will start the Rownd instance and
-          link up all your routes. This file should always be the first file to be linked in your index.html.
-          </p>
-          <p>
-          To start Rownd, you can use the <code class="inline">Rownd.start()</code> function. You can pass an object into this function to change the default parameters if
-          you wish to. After that you're going to need to create your first route. To create a route you use the <code class="inline">Rownd.createRoute()</code> function
-          within which you need to specifiy your path and controller for that path.
+          Setting up your Rownd.js application only requires a few lines of code. First thing you have to do is create your own instance of Rownd.js with your desired
+          configuration.
           </p>
           <pre>
             <code class="js">
@@ -117,7 +111,14 @@
     'hideInfo': false,
     'showVersion': true
   });
-
+            </code>
+          </pre>
+          <p>
+          The next thing you need is to create a route to run. The first route should always be the websites root location. To create a route, use the `Rownd.createRoute()`
+          function and pass an object inside that declares your path and controller name.
+          </p>
+          <pre>
+            <code class="js">
   rnd.createRoute({
     'path': '',
     'controller': 'index'
@@ -125,8 +126,8 @@
             </code>
           </pre>
           <p>
-          The next file you're going to need to create is your controller file. In here you can create your first controller using the <code class="inline">Rownd.createController()</code>.
-          When creating a controller you need to specify the name and the controller object.
+          Now that you have a route and told Rownd what controller to use for that route, you need to create the controller. To create a controller, us the 'Rownd.createController()'
+          function. When creating a controller you need to specify the index and a function to hold the controller functionality.
           </p>
           <pre>
             <code class="js">
