@@ -67,7 +67,7 @@
           <p>
           Rownd.js is a quick and simple Front-end framework. Lightweight and easier to build with than other MVC frameworks such as Angular.js or Ember.js.
           <br />
-          It uses <a href="http://www.ractivejs.org/">Ractive.js</a> at it's heart which makes rendering pages instant and allows two way data-binding with a
+          It uses <a href="http://www.ractivejs.org/">Ractive.js</a> at it's heart which makes rendering pages instant and offers two way data-binding with a
           pre-defined and user tested model API.
           </p>
         </div>
@@ -88,8 +88,7 @@
           Setting up Rownd.js is very simple, just download the <a href="http://silverlight513.github.io/Rownd-Start-up-kit/">Start up kit</a> and you're off.
           </p>
           <p>
-          Of course you don't have to use the Start up kit. You can just put it all together yourself. Just donwload Rownd and the Rownd template compiler. Put it all
-          together with your favorite build tool and build something cool.
+          You don't have to use the Start up kit. Just donwload Rownd and the Rownd template compiler. Put it all together with Grunt and build something cool.
           </p>
         </div>
         <div id="install">
@@ -152,8 +151,8 @@
             </code>
           </pre>
           <p>
-          The last step is to create a view using handlebars. To compile to handlebars files to Ractive templates we use the Rownd-Ractive-compiler. Which can be obtained
-          through npm.
+          The last step is to create a view using handlebars. To compile the handlebars files to Ractive templates you need to use the
+          <a href="https://www.npmjs.com/package/rownd-ractive-compiler">Rownd-Ractive-compiler</a>.
           </p>
         </div>
       </div>
@@ -165,10 +164,6 @@
               Routes
             </h3>
           </a>
-          <p>
-          In Rownd, routes are used to load individual pages and controllers into existence. Soon we will be adding in hierarchical routes but right now they're just plain and
-          simple.
-          </p>
         </div>
         <div id="creating-routes">
           <h4>Creating Routes</h4>
@@ -185,6 +180,13 @@
           anything you want inside this function but we suggest serving up a nice 404 page.
           </p>
         </div>
+        <div id="variable-routes">
+          <h4>Variable Routes</h4>
+          <p>
+          Paths can contain variables by putting a <code class="inline">:</code> infront of the section. E.g. <code class="inline">/users/:username</code>.
+          To access the variable you can get it from the routeData object inside your controller.
+          </p>
+        </div>
       </div>
       <div class="doc-section">
         <div id="templates">
@@ -195,7 +197,7 @@
             </h3>
           </a>
           <p>
-          Templates in Rownd are handlebar files that are rendered by <a href="http://www.ractivejs.org/">Ractive</a> into html. Because they are rendered by ractive they are
+          Templates in Rownd are handlebars files that are rendered by <a href="http://www.ractivejs.org/">Ractive</a> into html. Because they are rendered by ractive they are
           extremely quick to render. They also allow for two way data-binding between the controller and the template.
           </p>
         </div>
