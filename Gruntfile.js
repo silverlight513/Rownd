@@ -15,6 +15,14 @@ module.exports = function(grunt) {
       }
     },
 
+    uglify: {
+      scripts: {
+        files: {
+          'libs/main.min.js' : ['node_modules/jquery/dist/jquery.min.js', 'scripts/main.js']
+        }
+      }
+    },
+
     cssmin: {
       target: {
         files: {
@@ -27,6 +35,10 @@ module.exports = function(grunt) {
       less: {
         files: ['styles/*.less'],
         tasks: ['less', 'cssmin']
+      },
+      js: {
+        files: ['scripts/*.js'],
+        tasks: ['uglify']
       }
     }
 
@@ -38,6 +50,7 @@ module.exports = function(grunt) {
     .forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('default', [
+    'uglify',
     'less',
     'cssmin',
     'watch']
