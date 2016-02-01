@@ -99,7 +99,7 @@
     }
 
     if(hash.indexOf('#') > -1){
-      hash = hash.split('#')[0];
+      hash = hash.split('#')[1];
     }
 
     return hash;
@@ -431,7 +431,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.3.0');
+      info('Running Rownd v0.3.1');
     }
 
     // Function for loading new page
