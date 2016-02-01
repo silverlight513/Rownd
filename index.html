@@ -50,7 +50,7 @@
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#set-up">Docs</a></li>
-          <li><a href="#">Examples</a></li>
+          <li><a href="http://silverlight513.github.io/Rownd-Todo/">Examples</a></li>
         </ul>
       </nav>
     </section>
@@ -109,10 +109,14 @@
   var rnd = Rownd.start({
     'debug': true,
     'hideInfo': false,
-    'showVersion': true
+    'showVersion': true,
+    'rootUrl': ''
   });
             </code>
           </pre>
+          <p>
+          <a href="#config">Click here</a> to learn about the configuration options available in the start function.
+          </p>
           <p>
           The next thing you need is to create a route to run. The first route should always be the websites root location. To create a route, use the `Rownd.createRoute()`
           function and pass an object inside that declares your path and controller name.
@@ -301,6 +305,53 @@
   };
             </code>
           </pre>
+        </div>
+      </div>
+      <div class="doc-section">
+        <div id="config">
+          <a href="#config">
+            <h3>
+              <span class="entypo-link page-anchor"></span>
+              Configuring Rownd
+            </h3>
+          </a>
+          <p>
+          In Rownd there are four settings to configure. To set a configuration, add an object as a parameter to the start function. Then add an item to the object, of which
+          the key will be the configuration setting your editing and the value as the value.
+          </p>
+          <div id="debug">
+            <h4>Debug</h4>
+            <p>Default - true</p>
+            <p>
+            The debug configuration toggles the visibility of error logs from Rownd and Ractive.
+            </p>
+          </div>
+          <div id="hideInfo">
+            <h4>hideInfo</h4>
+            <p>Default - false</p>
+            <p>
+            The hideInfo configuration toggles the visibility of info logs from Rownd.
+            </p>
+          </div>
+          <div id="showVersion">
+            <h4>showVersion</h4>
+            <p>Default - true</p>
+            <p>
+            The showVersion configuration toggles the visibility of the Rownd version number that you're using. It appears in the console as an info log and therefore requires
+            the hideInfo configuration to be set to false.
+            </p>
+          </div>
+          <div id="rootUrl">
+            <h4>rootUrl</h4>
+            <p>Default - ""</p>
+            <p>
+            The rootUrl configuration allows Rownd to be used at any url, not just the base url. If your running RowndJS on a url that looks like this: http://test.dev/rownd/#
+            then you will need to set the rootUrl to '/rownd'. This will then tell Rownd to ignore the '/rownd' part of the url.
+            </p>
+            <p>
+            Do no use trailing slashes in the rootUrl as this may break in some builds of RowndJS.
+            </p>
+          </div>
         </div>
       </div>
     </section>
