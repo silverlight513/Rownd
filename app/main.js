@@ -17,7 +17,8 @@
   var config = {
     'debug': true,
     'hideInfo': false,
-    'showVersion': true
+    'showVersion': true,
+    'rootUrl': ''
   };
 
   // Namespace to store controllers upon set up
@@ -169,6 +170,12 @@
    */
   var getNewHash = function() {
     var hash = hashOrPath(window.location.host.length > 0 ? window.location.href.split(window.location.host)[1] : window.location.href);
+
+    // If a specified rootUrl is given then remove it from the hash
+    if(config.rootUrl) {
+      var hashRegex = new RegExp('^'+config.rootUrl,'g');
+      hash = hash.replace(hashRegex, '');
+    }
 
     // Remove trailing slash
     if(hash.length > 1 && endsWith(hash, '/')){
@@ -424,7 +431,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.2.4');
+      info('Running Rownd v0.3.0');
     }
 
     // Function for loading new page

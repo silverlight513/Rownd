@@ -1,5 +1,5 @@
 /*
- * rownd - v0.2.0 - 2016-01-01
+ * rownd - v0.3.0 - 2016-02-01
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -16624,7 +16624,8 @@
   var config = {
     'debug': true,
     'hideInfo': false,
-    'showVersion': true
+    'showVersion': true,
+    'rootUrl': ''
   };
 
   // Namespace to store controllers upon set up
@@ -16777,6 +16778,12 @@
   var getNewHash = function() {
     var hash = hashOrPath(window.location.host.length > 0 ? window.location.href.split(window.location.host)[1] : window.location.href);
 
+    // If a specified rootUrl is given then remove it from the hash
+    if(config.rootUrl) {
+      var hashRegex = new RegExp('^'+config.rootUrl,'g');
+      hash = hash.replace(hashRegex, '');
+    }
+
     // Remove trailing slash
     if(hash.length > 1 && endsWith(hash, '/')){
       hash = hash.slice(0, -1);
@@ -16927,6 +16934,8 @@
 
       // Clear all the active routes
       clearActiveRoutes();
+
+      Rownd.routeNotFound();
     }
   };
 
@@ -16989,6 +16998,20 @@
     return {};
   });
 
+
+  /**
+   *
+   * @param {Function} userFunction, The function that the user wants to fire when no route is found
+   * @return, The function that was passed to routeNotFound
+   */
+  Rownd.routeNotFound = function(userFunction){
+    if(userFunction){
+      userFunction();
+    } else {
+      return false;
+    }
+  };
+
   /**
    * @description, Allow the access of all available routes and controllers for debugging and testing
    */
@@ -17015,7 +17038,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.2.0');
+      info('Running Rownd v0.3.0');
     }
 
     // Function for loading new page
