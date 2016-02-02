@@ -89,7 +89,7 @@
           Setting up Rownd.js is very simple, just download the <a href="http://silverlight513.github.io/Rownd-Start-up-kit/">Start up kit</a> and you're off.
           </p>
           <p>
-          You don't have to use the Start up kit. Just donwload Rownd and the Rownd template compiler. Put it all together with Grunt and build something cool.
+          Don't want to use the Start up kit? Just donwload Rownd and the Rownd template compiler from npm. Put it all together with Grunt and build something cool.
           </p>
         </div>
         <div id="install">
@@ -115,11 +115,11 @@
             </code>
           </pre>
           <p>
-          <a href="#config">Click here</a> to learn about the configuration options available in the start function.
+          <a href="#config">Click here</a> to learn more about the configuration options available in the start function.
           </p>
           <p>
-          The next thing you need is to create a route to run. The first route should always be the websites root location. To create a route, use the `Rownd.createRoute()`
-          function and pass an object inside that declares your path and controller name.
+          After you've done that, you'll need to create a route to run. The first route should always be root. To create a route, use the
+          <code class="inline">createRoute()</code> function and pass an object inside that declares your path and controller name.
           </p>
           <pre>
             <code class="js">
@@ -130,8 +130,9 @@
             </code>
           </pre>
           <p>
-          Now that you have a route and told Rownd what controller to use for that route, you need to create the controller. To create a controller, us the 'Rownd.createController()'
-          function. When creating a controller you need to specify the index and a function to hold the controller functionality.
+          Now that you have a route and told Rownd what controller to use for that route, you need to create the controller itself. To create a controller,
+          use the <code class="inline">createController()</code> function. This function requires two parameters; the controller name and the function which contains
+          your initial view, controller logic and template actions. Check out the example below for more details.
           </p>
           <pre>
             <code class="js">
@@ -173,7 +174,7 @@
         <div id="creating-routes">
           <h4>Creating Routes</h4>
           <p>
-          To create a route you will need to use the <code class="inline">Rownd.createRoute()</code> function. To use this function you simply add it to your routes file and pass it an object
+          To create a route you will need to use the <code class="inline">createRoute()</code> function. To use this function you simply add it to your routes file and pass it an object
           with two parameters; controller and path. The controller item must be the same as the name of the controller you want to use and the path is the url you would like
           to use for this new page.
           </p>
@@ -181,7 +182,7 @@
         <div id="missing-routes">
           <h4>404 Pages</h4>
           <p>
-          To create a 404 page you will need to utilize the <code class="inline">Rownd.routeNotFound()</code> function. This function will fire whenever a route cannot be found. You can run
+          To create a 404 page you will need to utilize the <code class="inline">routeNotFound()</code> function. This function will fire whenever a route cannot be found. You can run
           anything you want inside this function but we suggest serving up a nice 404 page.
           </p>
         </div>
@@ -209,8 +210,8 @@
         <div id="generate-template">
           <h4>generateTemplate()</h4>
           <p>
-          If you want to load in a partial template or render a whole new template on the current page you can use the <code class="inline">Rownd.generateTemplate()</code> function.
-          <code>generateTemplate()</code> only requires an object as it's parameter with the following contents.
+          If you want to load in a partial template or render a whole new template on the current page you can use the <code class="inline">generateTemplate()</code> function.
+          <code class="inline">generateTemplate()</code> only requires an object as it's parameter with the following contents.
           </p>
           <ul class="styled-list">
             <li><span class="first">template</span> - Name of the new template</li>
@@ -230,8 +231,8 @@
           </a>
           <p>
           Controllers are where most of the logic for your application will be based. Some small logic may be in the template actions or in your helper library. Creating a controller is
-          simple, just use the <code class="inline">Rownd.createController()</code> function and match up the name of the controller with the name used in the
-          <code class="inline">Rownd.createRoute()</code> function. Below is an example controller:
+          simple, just use the <code class="inline">createController()</code> function and match up the name of the controller with the name used in the
+          <code class="inline">createRoute()</code> function. Below is an example controller:
           </p>
           <pre>
             <code class="js">
