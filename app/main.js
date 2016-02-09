@@ -121,7 +121,7 @@
       }
 
       // If the route has a dynamic section convert both paths to find match
-      var splitRoute = routes[2].path.split('/');
+      var splitRoute = routes[i].path.split('/');
       splitRoute = splitRoute.splice(1, splitRoute.length);
 
       var splitPath = path.split('/');
@@ -431,7 +431,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.3.1');
+      info('Running Rownd v0.3.2');
     }
 
     // Function for loading new page
