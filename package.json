@@ -1,6 +1,6 @@
 {
   "name": "rownd",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Package dependencies for the rownd project",
   "main": "Gruntfile.js",
   "scripts": {

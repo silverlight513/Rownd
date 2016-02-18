@@ -431,7 +431,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.3.2');
+      info('Running Rownd v0.3.3');
     }
 
     // Function for loading new page

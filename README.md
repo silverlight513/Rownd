@@ -5,6 +5,6 @@
 #Documentation
 To view the documentation for RowndJS, go to the website: [RowndJS Docs](http://silverlight513.github.io/Rownd/)
 
-##Code Additions still to do
- - Hierarchical routes with parents
- - Add in History mode so no need for the #
+#Start Up Kit
+Get set up in less than a minute with the [Start Up Kit](http://silverlight513.github.io/Rownd-Start-up-kit/). It's a simple boilerplate to get a project going. It uses npm and grunt for package management and building.
+The Start Up Kit will be ported into a version using Gulp soon.
