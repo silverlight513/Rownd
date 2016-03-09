@@ -393,7 +393,6 @@
 
 
   /**
-   *
    * @param {Function} userFunction, The function that the user wants to fire when no route is found
    * @return, The function that was passed to routeNotFound
    */
@@ -410,6 +409,79 @@
    */
   Rownd.routes = routes;
   Rownd.controllers = accessableControllers;
+
+  Rownd.hello = {
+    hello: function() {
+      return 'hello';
+    }
+  };
+
+  /**
+   * @description, Creating the Rownd.ajax object to store the ajax functions in
+   */
+  Rownd.ajax = {
+    get: function(url) {
+      // Return a promise of the request
+      return new Promise(function(resolve, reject) {
+        // Create the request
+        var oReq = new XMLHttpRequest();
+
+        //
+        var cacheBust = '?' + new Date().getMilliseconds();
+        oReq.open('GET', url + cacheBust);
+
+        oReq.onload = function() {
+          // Check that the status is OK
+          if (oReq.status === 200) {
+            // Resolve the promise with the response text
+            resolve(oReq.response);
+          }
+          else {
+            // Reject the promise with response status text
+            reject(Error(oReq.statusText));
+          }
+        };
+
+        // In case there is a network error reject on error too
+        oReq.onerror = function() {
+          reject(Error('Network Error!'));
+        };
+
+        oReq.send();
+      });
+    },
+    post: function(url, data) {
+      // Return a promise of the request
+      return new Promise(function(resolve, reject) {
+        // Create the request and set content type
+        var oReq = new XMLHttpRequest();
+        oReq.setRequestHeader('Content-Type', 'application/json');
+
+        var cacheBust = '?' + new Date().getMilliseconds();
+        oReq.open('GET', url + cacheBust);
+
+        oReq.onload = function() {
+          // Check that the status is OK
+          if (oReq.status === 200) {
+            // Resolve the promise with the response text
+            resolve(oReq.response);
+          }
+          else {
+            // Reject the promise with response status text
+            reject(Error(oReq.statusText));
+          }
+        };
+
+        // In case there is a network error reject on error too
+        oReq.onerror = function() {
+          reject(Error('Network Error!'));
+        };
+
+        // Send stringified json
+        oReq.send(JSON.stringify(data));
+      });
+    }
+  };
 
   /**
    * @description, Listens to when there was a hashchange made when there is no history mode enabled
