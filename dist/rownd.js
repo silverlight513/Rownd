@@ -1,5 +1,5 @@
 /*
- * rownd - v0.3.3 - 2016-03-04
+ * rownd - v0.3.3 - 2016-03-18
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -16612,6 +16612,12 @@
 }));
 //# sourceMappingURL=ractive.js.map
 
+// Import Promise polyfill | JShint is using ES6 so it claims it is already defined
+/* jshint ignore:start */
+var Promise = require('es6-promise').Promise;
+/* jshint ignore:end */
+
+// Enclose the Rownd namespace
 (function(Rownd) {
 
   // Create vars needed
@@ -17024,9 +17030,9 @@
   };
 
   /**
-   * @description, Creating the Rownd.ajax object to store the ajax functions in
+   * @description, Creating the ajax object to store the ajax functions in so Rownd can access them neatly
    */
-  Rownd.ajax = {
+  var ajaxCalls = {
     get: function(url) {
       // Return a promise of the request
       return new Promise(function(resolve, reject) {
@@ -17051,7 +17057,7 @@
 
         // In case there is a network error reject on error too
         oReq.onerror = function() {
-          reject(Error('Network Error!'));
+          reject(Error('Unable to make the request'));
         };
 
         oReq.send();
@@ -17081,13 +17087,27 @@
 
         // In case there is a network error reject on error too
         oReq.onerror = function() {
-          reject(Error('Network Error!'));
+          reject(Error('Unable to make the request'));
         };
 
         // Send stringified json
         oReq.send(JSON.stringify(data));
       });
     }
+  };
+
+  /**
+   * @description Function to get and fire the ajax requests
+   */
+  Rownd.ajax = function(method, url, data) {
+    // Throw error if there isn't an ajax function for the method given
+    if(!ajaxCalls.hasOwnProperty(method)) {
+      error('Unknown method provided for Ajax request');
+      return false;
+    }
+
+    // Call the function for the given method
+    return ajaxCalls[method](url, data);
   };
 
   /**
