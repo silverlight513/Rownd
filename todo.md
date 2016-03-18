@@ -1,3 +1,4 @@
 #Todo
 
- - Move the ajax functions to controllers object so you can just call: this.get() & this.post().
+ - Add Put and Delete methods to ajaxCalls{}
+ - Fully integrate Babel and Browsify

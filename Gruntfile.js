@@ -25,6 +25,24 @@ module.exports = function(grunt) {
       }
     },
 
+    browserify: {
+       dist: {
+          options: {
+             transform: [
+                ["babelify", {
+                  // Config goes here...
+                }]
+             ]
+          },
+          files: {
+             // if the source file has an extension of es6 then
+             // we change the name of the source file accordingly.
+             // The result file's extension is always .js
+             "./dist/module.js": ["./modules/index.js"]
+          }
+       }
+    },
+
     jshint: {
       options : {
         jshintrc : '.jshintrc'
