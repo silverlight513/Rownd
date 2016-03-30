@@ -465,7 +465,69 @@ var Promise = require('es6-promise').Promise;
         oReq.setRequestHeader('Content-Type', 'application/json');
 
         var cacheBust = '?' + new Date().getMilliseconds();
-        oReq.open('GET', url + cacheBust);
+        oReq.open('POST', url + cacheBust);
+
+        oReq.onload = function() {
+          // Check that the status is OK
+          if (oReq.status === 200) {
+            // Resolve the promise with the response text
+            resolve(oReq.response);
+          }
+          else {
+            // Reject the promise with response status text
+            reject(Error(oReq.statusText));
+          }
+        };
+
+        // In case there is a network error reject on error too
+        oReq.onerror = function() {
+          reject(Error('Unable to make the request'));
+        };
+
+        // Send stringified json
+        oReq.send(JSON.stringify(data));
+      });
+    },
+    put: function(url, data) {
+      // Return a promise of the request
+      return new Promise(function(resolve, reject) {
+        // Create the request and set content type
+        var oReq = new XMLHttpRequest();
+        oReq.setRequestHeader('Content-Type', 'application/json');
+
+        var cacheBust = '?' + new Date().getMilliseconds();
+        oReq.open('PUT', url + cacheBust);
+
+        oReq.onload = function() {
+          // Check that the status is OK
+          if (oReq.status === 200) {
+            // Resolve the promise with the response text
+            resolve(oReq.response);
+          }
+          else {
+            // Reject the promise with response status text
+            reject(Error(oReq.statusText));
+          }
+        };
+
+        // In case there is a network error reject on error too
+        oReq.onerror = function() {
+          reject(Error('Unable to make the request'));
+        };
+
+        // Send stringified json
+        oReq.send(JSON.stringify(data));
+      });
+    },
+    delete: fucntion(url, data) {
+      // Return a promise of the request
+      return new Promise(function(resolve, reject) {
+        // Create the request and set content type
+        var oReq = new XMLHttpRequest();
+        oReq.setRequestHeader('Content-Type', 'application/json');
+
+        var cacheBust = '?' + new Date().getMilliseconds();
+        oReq.open('DELETE', url + cacheBust);
 
         oReq.onload = function() {
           // Check that the status is OK
