@@ -1,5 +1,5 @@
 /*
- * rownd - v0.3.3 - 2016-03-18
+ * rownd - v0.3.3 - 2016-04-03
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -16612,10 +16612,8 @@
 }));
 //# sourceMappingURL=ractive.js.map
 
-// Import Promise polyfill | JShint is using ES6 so it claims it is already defined
-/* jshint ignore:start */
-var Promise = require('es6-promise').Promise;
-/* jshint ignore:end */
+// Import Promise polyfill
+var EsPrmoise = require('es6-promise').Promise;
 
 // Enclose the Rownd namespace
 (function(Rownd) {
@@ -17035,7 +17033,7 @@ var Promise = require('es6-promise').Promise;
   var ajaxCalls = {
     get: function(url) {
       // Return a promise of the request
-      return new Promise(function(resolve, reject) {
+      return new EsPrmoise(function(resolve, reject) {
         // Create the request
         var oReq = new XMLHttpRequest();
 
@@ -17065,13 +17063,75 @@ var Promise = require('es6-promise').Promise;
     },
     post: function(url, data) {
       // Return a promise of the request
-      return new Promise(function(resolve, reject) {
+      return new EsPrmoise(function(resolve, reject) {
         // Create the request and set content type
         var oReq = new XMLHttpRequest();
         oReq.setRequestHeader('Content-Type', 'application/json');
 
         var cacheBust = '?' + new Date().getMilliseconds();
-        oReq.open('GET', url + cacheBust);
+        oReq.open('POST', url + cacheBust);
+
+        oReq.onload = function() {
+          // Check that the status is OK
+          if (oReq.status === 200) {
+            // Resolve the promise with the response text
+            resolve(oReq.response);
+          }
+          else {
+            // Reject the promise with response status text
+            reject(Error(oReq.statusText));
+          }
+        };
+
+        // In case there is a network error reject on error too
+        oReq.onerror = function() {
+          reject(Error('Unable to make the request'));
+        };
+
+        // Send stringified json
+        oReq.send(JSON.stringify(data));
+      });
+    },
+    put: function(url, data) {
+      // Return a promise of the request
+      return new EsPrmoise(function(resolve, reject) {
+        // Create the request and set content type
+        var oReq = new XMLHttpRequest();
+        oReq.setRequestHeader('Content-Type', 'application/json');
+
+        var cacheBust = '?' + new Date().getMilliseconds();
+        oReq.open('PUT', url + cacheBust);
+
+        oReq.onload = function() {
+          // Check that the status is OK
+          if (oReq.status === 200) {
+            // Resolve the promise with the response text
+            resolve(oReq.response);
+          }
+          else {
+            // Reject the promise with response status text
+            reject(Error(oReq.statusText));
+          }
+        };
+
+        // In case there is a network error reject on error too
+        oReq.onerror = function() {
+          reject(Error('Unable to make the request'));
+        };
+
+        // Send stringified json
+        oReq.send(JSON.stringify(data));
+      });
+    },
+    delete: function(url, data) {
+      // Return a promise of the request
+      return new EsPrmoise(function(resolve, reject) {
+        // Create the request and set content type
+        var oReq = new XMLHttpRequest();
+        oReq.setRequestHeader('Content-Type', 'application/json');
+
+        var cacheBust = '?' + new Date().getMilliseconds();
+        oReq.open('DELETE', url + cacheBust);
 
         oReq.onload = function() {
           // Check that the status is OK

@@ -6,10 +6,8 @@
  *
  */
 
-// Import Promise polyfill | JShint is using ES6 so it claims it is already defined
-/* jshint ignore:start */
-var Promise = require('es6-promise').Promise;
-/* jshint ignore:end */
+// Import Promise polyfill
+var EsPrmoise = require('es6-promise').Promise;
 
 // Enclose the Rownd namespace
 (function(Rownd) {
@@ -429,7 +427,7 @@ var Promise = require('es6-promise').Promise;
   var ajaxCalls = {
     get: function(url) {
       // Return a promise of the request
-      return new Promise(function(resolve, reject) {
+      return new EsPrmoise(function(resolve, reject) {
         // Create the request
         var oReq = new XMLHttpRequest();
 
@@ -459,7 +457,7 @@ var Promise = require('es6-promise').Promise;
     },
     post: function(url, data) {
       // Return a promise of the request
-      return new Promise(function(resolve, reject) {
+      return new EsPrmoise(function(resolve, reject) {
         // Create the request and set content type
         var oReq = new XMLHttpRequest();
         oReq.setRequestHeader('Content-Type', 'application/json');
@@ -490,7 +488,7 @@ var Promise = require('es6-promise').Promise;
     },
     put: function(url, data) {
       // Return a promise of the request
-      return new Promise(function(resolve, reject) {
+      return new EsPrmoise(function(resolve, reject) {
         // Create the request and set content type
         var oReq = new XMLHttpRequest();
         oReq.setRequestHeader('Content-Type', 'application/json');
@@ -519,9 +517,9 @@ var Promise = require('es6-promise').Promise;
         oReq.send(JSON.stringify(data));
       });
     },
-    delete: fucntion(url, data) {
+    delete: function(url, data) {
       // Return a promise of the request
-      return new Promise(function(resolve, reject) {
+      return new EsPrmoise(function(resolve, reject) {
         // Create the request and set content type
         var oReq = new XMLHttpRequest();
         oReq.setRequestHeader('Content-Type', 'application/json');
