@@ -17028,7 +17028,7 @@
         // Create the request
         var oReq = new XMLHttpRequest();
 
-        //
+        // implement cache busting
         var cacheBust = '?' + new Date().getMilliseconds();
         oReq.open('GET', url + cacheBust);
 
@@ -17036,7 +17036,12 @@
           // Check that the status is OK
           if (oReq.status === 200) {
             // Resolve the promise with the response text
-            resolve(oReq.response);
+            var data = oReq.response;
+            try {
+              data = JSON.parse(data);
+            } catch( err ) { }
+
+            resolve(data);
           }
           else {
             // Reject the promise with response status text
@@ -17066,7 +17071,12 @@
           // Check that the status is OK
           if (oReq.status === 200) {
             // Resolve the promise with the response text
-            resolve(oReq.response);
+            var data = oReq.response;
+            try {
+              data = JSON.parse(data);
+            } catch( err ) { }
+
+            resolve(data);
           }
           else {
             // Reject the promise with response status text
@@ -17097,7 +17107,12 @@
           // Check that the status is OK
           if (oReq.status === 200) {
             // Resolve the promise with the response text
-            resolve(oReq.response);
+            var data = oReq.response;
+            try {
+              data = JSON.parse(data);
+            } catch( err ) { }
+
+            resolve(data);
           }
           else {
             // Reject the promise with response status text
@@ -17128,7 +17143,12 @@
           // Check that the status is OK
           if (oReq.status === 200) {
             // Resolve the promise with the response text
-            resolve(oReq.response);
+            var data = oReq.response;
+            try {
+              data = JSON.parse(data);
+            } catch( err ) { }
+
+            resolve(data);
           }
           else {
             // Reject the promise with response status text
