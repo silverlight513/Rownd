@@ -21,22 +21,7 @@ module.exports = function(grunt) {
           'node_modules/ractive/ractive.js',
           'app/main.js'
         ],
-        dest: 'temp/rownd.js'
-      }
-    },
-
-    exec: {
-      cleanDist: {
-        command: 'rm -r dist'
-      },
-      createDist: {
-        command: 'mkdir dist'
-      },
-      browserify: {
-        command: 'browserify -r es6-promise -s temp/rownd.js:Rownd > dist/rownd.js'
-      },
-      removeTemp: {
-        command: 'rm -r temp'
+        dest: 'dist/rownd.js'
       }
     },
 
@@ -63,7 +48,7 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: ['app/**/*.js'],
-        tasks: ['jshint', 'concat:app', 'exec', 'uglify']
+        tasks: ['jshint', 'concat', 'uglify']
       }
     }
 
@@ -78,7 +63,6 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', [
     'jshint',
     'concat',
-    'exec',
     'uglify',
     'watch']
   );
@@ -87,7 +71,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'jshint',
     'concat',
-    'exec',
     'uglify']
   );
 

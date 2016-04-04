@@ -6,9 +6,6 @@
  *
  */
 
-// Import Promise polyfill
-var EsPrmoise = require('es6-promise').Promise;
-
 // Enclose the Rownd namespace
 (function(Rownd) {
 
@@ -421,7 +418,7 @@ var EsPrmoise = require('es6-promise').Promise;
   var ajaxCalls = {
     get: function(url) {
       // Return a promise of the request
-      return new EsPrmoise(function(resolve, reject) {
+      return new Ractive.Promise(function(resolve, reject) {
         // Create the request
         var oReq = new XMLHttpRequest();
 
@@ -451,7 +448,7 @@ var EsPrmoise = require('es6-promise').Promise;
     },
     post: function(url, data) {
       // Return a promise of the request
-      return new EsPrmoise(function(resolve, reject) {
+      return new Ractive.Promise(function(resolve, reject) {
         // Create the request and set content type
         var oReq = new XMLHttpRequest();
         oReq.setRequestHeader('Content-Type', 'application/json');
@@ -482,7 +479,7 @@ var EsPrmoise = require('es6-promise').Promise;
     },
     put: function(url, data) {
       // Return a promise of the request
-      return new EsPrmoise(function(resolve, reject) {
+      return new Ractive.Promise(function(resolve, reject) {
         // Create the request and set content type
         var oReq = new XMLHttpRequest();
         oReq.setRequestHeader('Content-Type', 'application/json');
@@ -513,7 +510,7 @@ var EsPrmoise = require('es6-promise').Promise;
     },
     delete: function(url, data) {
       // Return a promise of the request
-      return new EsPrmoise(function(resolve, reject) {
+      return new Ractive.Promise(function(resolve, reject) {
         // Create the request and set content type
         var oReq = new XMLHttpRequest();
         oReq.setRequestHeader('Content-Type', 'application/json');
