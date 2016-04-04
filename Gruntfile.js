@@ -21,26 +21,15 @@ module.exports = function(grunt) {
           'node_modules/ractive/ractive.js',
           'app/main.js'
         ],
-        dest: 'dist/rownd.js'
+        dest: 'dist/rownd-es6.js'
       }
     },
 
     browserify: {
-       dist: {
-          options: {
-             transform: [
-                ["babelify", {
-                  // Config goes here...
-                }]
-             ]
-          },
-          files: {
-             // if the source file has an extension of es6 then
-             // we change the name of the source file accordingly.
-             // The result file's extension is always .js
-             "./dist/module.js": ["./modules/index.js"]
-          }
-       }
+      dist: {
+        src: 'dist/rownd-es6.js',
+        dest: 'dist/rownd.js'
+      },
     },
 
     jshint: {
@@ -66,7 +55,7 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: ['app/**/*.js'],
-        tasks: ['concat:app', 'jshint', 'uglify']
+        tasks: ['concat:app', 'jshint', 'browserify', 'uglify']
       }
     }
 
@@ -81,6 +70,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', [
     'concat',
     'jshint',
+    'browserify',
     'uglify',
     'watch']
   );
@@ -89,6 +79,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'concat',
     'jshint',
+    'browserify',
     'uglify']
   );
 
