@@ -415,12 +415,6 @@ var EsPrmoise = require('es6-promise').Promise;
   Rownd.routes = routes;
   Rownd.controllers = accessableControllers;
 
-  Rownd.hello = {
-    hello: function() {
-      return 'hello';
-    }
-  };
-
   /**
    * @description, Creating the ajax object to store the ajax functions in so Rownd can access them neatly
    */
@@ -614,3 +608,5 @@ var EsPrmoise = require('es6-promise').Promise;
 
 
 }(this.Rownd = this.Rownd || {}));
+
+exports.module = Rownd;

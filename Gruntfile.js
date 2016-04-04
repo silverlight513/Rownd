@@ -26,11 +26,14 @@ module.exports = function(grunt) {
     },
 
     exec: {
+      cleanDist: {
+        command: 'rm -r dist'
+      },
       createDist: {
         command: 'mkdir dist'
       },
       browserify: {
-        command: 'browserify -r es6-promise temp/rownd.js > dist/rownd.js'
+        command: 'browserify -r es6-promise -s temp/rownd.js:Rownd > dist/rownd.js'
       },
       removeTemp: {
         command: 'rm -r temp'

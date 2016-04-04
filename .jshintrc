@@ -1,5 +1,5 @@
 {
-  "predef": [ "Ractive" ],
+  "predef": [ "Ractive", "Rownd" ],
   "browser": true,
   "browserify": true,
   "camelcase": true,
