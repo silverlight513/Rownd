@@ -21,15 +21,20 @@ module.exports = function(grunt) {
           'node_modules/ractive/ractive.js',
           'app/main.js'
         ],
-        dest: 'dist/rownd-es6.js'
+        dest: 'temp/rownd.js'
       }
     },
 
-    browserify: {
-      dist: {
-        src: 'dist/rownd-es6.js',
-        dest: 'dist/rownd.js'
+    exec: {
+      createDist: {
+        command: 'mkdir dist'
       },
+      browserify: {
+        command: 'browserify -r es6-promise temp/rownd.js > dist/rownd.js'
+      },
+      removeTemp: {
+        command: 'rm -r temp'
+      }
     },
 
     jshint: {
@@ -55,7 +60,7 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: ['app/**/*.js'],
-        tasks: ['concat:app', 'jshint', 'browserify', 'uglify']
+        tasks: ['jshint', 'concat:app', 'exec', 'uglify']
       }
     }
 
@@ -68,18 +73,18 @@ module.exports = function(grunt) {
 
   // For dev on local machine
   grunt.registerTask('dev', [
-    'concat',
     'jshint',
-    'browserify',
+    'concat',
+    'exec',
     'uglify',
     'watch']
   );
 
   // For server
   grunt.registerTask('default', [
-    'concat',
     'jshint',
-    'browserify',
+    'concat',
+    'exec',
     'uglify']
   );
 
