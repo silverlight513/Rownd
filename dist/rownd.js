@@ -1,5 +1,5 @@
 /*
- * rownd - v0.3.4 - 2016-04-05
+ * rownd - v0.4.0 - 2016-04-05
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
