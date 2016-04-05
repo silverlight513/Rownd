@@ -1,5 +1,5 @@
 /*
- * rownd - v0.3.3 - 2016-04-04
+ * rownd - v0.3.4 - 2016-04-05
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -17019,166 +17019,69 @@
   Rownd.controllers = accessableControllers;
 
   /**
-   * @description, Creating the ajax object to store the ajax functions in so Rownd can access them neatly
+   * Function to get the content type for the ajax requests
    */
-  var ajaxCalls = {
-    get: function(url) {
-      // Return a promise of the request
-      return new Ractive.Promise(function(resolve, reject) {
-        // Create the request
-        var oReq = new XMLHttpRequest();
+  var getContentType = function(contentType) {
 
-        // implement cache busting
-        var cacheBust = '?' + new Date().getMilliseconds();
-        oReq.open('GET', url + cacheBust);
-
-        oReq.onload = function() {
-          // Check that the status is OK
-          if (oReq.status === 200) {
-            // Resolve the promise with the response text
-            var data = oReq.response;
-            try {
-              data = JSON.parse(data);
-            } catch( err ) { }
-
-            resolve(data);
-          }
-          else {
-            // Reject the promise with response status text
-            reject(Error(oReq.statusText));
-          }
-        };
-
-        // In case there is a network error reject on error too
-        oReq.onerror = function() {
-          reject(Error('Unable to make the request'));
-        };
-
-        oReq.send();
-      });
-    },
-    post: function(url, data) {
-      // Return a promise of the request
-      return new Ractive.Promise(function(resolve, reject) {
-        // Create the request and set content type
-        var oReq = new XMLHttpRequest();
-        oReq.setRequestHeader('Content-Type', 'application/json');
-
-        var cacheBust = '?' + new Date().getMilliseconds();
-        oReq.open('POST', url + cacheBust);
-
-        oReq.onload = function() {
-          // Check that the status is OK
-          if (oReq.status === 200) {
-            // Resolve the promise with the response text
-            var data = oReq.response;
-            try {
-              data = JSON.parse(data);
-            } catch( err ) { }
-
-            resolve(data);
-          }
-          else {
-            // Reject the promise with response status text
-            reject(Error(oReq.statusText));
-          }
-        };
-
-        // In case there is a network error reject on error too
-        oReq.onerror = function() {
-          reject(Error('Unable to make the request'));
-        };
-
-        // Send stringified json
-        oReq.send(JSON.stringify(data));
-      });
-    },
-    put: function(url, data) {
-      // Return a promise of the request
-      return new Ractive.Promise(function(resolve, reject) {
-        // Create the request and set content type
-        var oReq = new XMLHttpRequest();
-        oReq.setRequestHeader('Content-Type', 'application/json');
-
-        var cacheBust = '?' + new Date().getMilliseconds();
-        oReq.open('PUT', url + cacheBust);
-
-        oReq.onload = function() {
-          // Check that the status is OK
-          if (oReq.status === 200) {
-            // Resolve the promise with the response text
-            var data = oReq.response;
-            try {
-              data = JSON.parse(data);
-            } catch( err ) { }
-
-            resolve(data);
-          }
-          else {
-            // Reject the promise with response status text
-            reject(Error(oReq.statusText));
-          }
-        };
-
-        // In case there is a network error reject on error too
-        oReq.onerror = function() {
-          reject(Error('Unable to make the request'));
-        };
-
-        // Send stringified json
-        oReq.send(JSON.stringify(data));
-      });
-    },
-    delete: function(url, data) {
-      // Return a promise of the request
-      return new Ractive.Promise(function(resolve, reject) {
-        // Create the request and set content type
-        var oReq = new XMLHttpRequest();
-        oReq.setRequestHeader('Content-Type', 'application/json');
-
-        var cacheBust = '?' + new Date().getMilliseconds();
-        oReq.open('DELETE', url + cacheBust);
-
-        oReq.onload = function() {
-          // Check that the status is OK
-          if (oReq.status === 200) {
-            // Resolve the promise with the response text
-            var data = oReq.response;
-            try {
-              data = JSON.parse(data);
-            } catch( err ) { }
-
-            resolve(data);
-          }
-          else {
-            // Reject the promise with response status text
-            reject(Error(oReq.statusText));
-          }
-        };
-
-        // In case there is a network error reject on error too
-        oReq.onerror = function() {
-          reject(Error('Unable to make the request'));
-        };
-
-        // Send stringified json
-        oReq.send(JSON.stringify(data));
-      });
+    switch (contentType) {
+      case 'url-encoded':
+        return 'application/x-www-form-urlencoded';
+      case 'multipart':
+        return 'multipart/form-data';
+      default:
+        return 'application/json;charset=UTF-8';
     }
   };
 
   /**
-   * @description Function to get and fire the ajax requests
+   * Create ajax request and return a Promise (polyfilled by Ractive)
    */
-  Rownd.ajax = function(method, url, data) {
-    // Throw error if there isn't an ajax function for the method given
-    if(!ajaxCalls.hasOwnProperty(method)) {
-      error('Unknown method provided for Ajax request');
-      return false;
-    }
+  Rownd.ajax = function(method, url, data, contentType) {
 
-    // Call the function for the given method
-    return ajaxCalls[method](url, data);
+    return new Ractive.Promise(function(resolve, reject) {
+
+      var xhr;
+
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else {
+        xhr = new ActiveXObject('Microsoft.XMLHTTP');// jshint ignore:line
+      }
+
+      xhr.onreadystatechange = function() {
+
+        var errorCodes = [ 404, 400, 500 ];
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = xhr.responseText;
+          try { data = JSON.parse(data); } catch( err ) { }
+
+          resolve({ status: this.status, statusText: xhr.statusText, data: data });
+        } else if ( errorCodes.indexOf(xhr.status) > -1 ) {
+          reject({ status: this.status, statusText: xhr.statusText });
+        }
+
+      };
+
+      xhr.onerror = function(error) {// jshint ignore:line
+        reject({ status: this.status, statusText: xhr.statusText });
+      };
+
+      xhr.open( method || 'GET' , url);// jshint ignore:line
+
+      contentType = getContentType( contentType );
+      xhr.setRequestHeader('Content-Type', contentType );
+
+      data = contentType && contentType.indexOf('json') > -1 ? JSON.stringify(data) : data;
+
+      if ( data ) {
+        xhr.send( data );
+      } else {
+        xhr.send();
+      }
+
+    });
+
   };
 
   /**
