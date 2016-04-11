@@ -446,13 +446,13 @@
 
         var errorCodes = [ 404, 400, 500 ];
 
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          var data = xhr.responseText;
-          try { data = JSON.parse(data); } catch( err ) { }
+        var data = xhr.responseText;
+        try { data = JSON.parse(data); } catch( err ) { }
 
+        if (xhr.readyState === 4 && xhr.status === 200) {
           resolve({ status: this.status, statusText: xhr.statusText, data: data });
         } else if ( errorCodes.indexOf(xhr.status) > -1 ) {
-          reject({ status: this.status, statusText: xhr.statusText });
+          reject({ status: this.status, statusText: xhr.statusText, data: data });
         }
 
       };
@@ -498,7 +498,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.3.3');
+      info('Running Rownd v0.4.1');
     }
 
     // Function for loading new page
