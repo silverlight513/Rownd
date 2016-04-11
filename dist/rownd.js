@@ -1,5 +1,5 @@
 /*
- * rownd - v0.4.1 - 2016-04-11
+ * rownd - v0.4.2 - 2016-04-11
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -17057,14 +17057,10 @@
 
         if (xhr.readyState === 4 && xhr.status === 200) {
           resolve({ status: this.status, statusText: xhr.statusText, data: data });
-        } else if ( errorCodes.indexOf(xhr.status) > -1 ) {
+        } else if ( errorCodes.indexOf(xhr.status) > -1 && xhr.readyState === 4 ) {
           reject({ status: this.status, statusText: xhr.statusText, data: data });
         }
 
-      };
-
-      xhr.onerror = function(error) {// jshint ignore:line
-        reject({ status: this.status, statusText: xhr.statusText });
       };
 
       xhr.open( method || 'GET' , url);// jshint ignore:line
@@ -17104,7 +17100,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.4.1');
+      info('Running Rownd v0.4.2');
     }
 
     // Function for loading new page
