@@ -240,11 +240,18 @@
 
     // Specifiy the initial template
     'view': {
-      'template': 'index'
+      'template': 'index',
+      'data': {
+        'foo': 'bar'
+      }
     },
 
     // All your logic goes here
     'controller': function(routeData){
+      // Change the value of foo to hello
+      this.set({
+        'foo': 'hello'
+      });
     },
 
     //  All the template logic functions
@@ -282,8 +289,66 @@
           <p>
             To use data binding in the controller you can use the Ractive <a href="http://docs.ractivejs.org/latest/ractive-get">get</a> and
             <a href="http://docs.ractivejs.org/latest/ractive-set">set</a> functions. Because the view is directly rendered with Ractive we can use all of Ractive's
-            instance methods. Which you can find all the documentation <a href="http://docs.ractivejs.org/latest/ractive-add">here</a>.
+            instance methods. Which you can find all the documentation <a href="http://docs.ractivejs.org/latest/ractive-add">here</a>. You can also use these methods inside the
+            templates themselves.
           </p>
+        </div>
+      </div>
+      <div class="doc-section">
+        <div id="ajax">
+          <a href="#ajax">
+            <h3>
+            <span class="entypo-link page-anchor"></span>
+            Ajax Requests
+            </h3>
+          </a>
+          <p>
+          There's no need to pull in jQuery to do your Ajax requests. Rownd has built in Ajax requests implemented with promises that follow the ES6 specifications.
+          Rownd uses the Ractive Promise polyfill for when there is no browser support for it.
+          </p>
+          <pre>
+            <code class="js">
+  rnd.ajax('GET', '/foo').then(function(res) {
+    // Log response
+    console.log(res);
+  });
+            </code>
+          </pre>
+          <p>
+          The ajax function allows to any http method and setting of the content-type header.
+          </p>
+          <pre>
+            <code class="js">
+  rnd.ajax('POST', '/foo', {foo: 'bar'}, 'application/json').then(function(res) {
+    // Log response
+    console.log(res);
+  });
+            </code>
+          </pre>
+        </div>
+      </div>
+      <div class="doc-section">
+        <div id="promises">
+          <a href="#promises">
+            <h3>
+            <span class="entypo-link page-anchor"></span>
+            Promises
+            </h3>
+          </a>
+          <p>
+          Rownd uses the Ractive Promise implementation which is simply a polyfill for the ES6 specification. Learn more about them <a href="http://docs.ractivejs.org/latest/promises">here</a>.
+          </p>
+          <pre>
+            <code class="js">
+  rnd.Promise(function(resolve, reject) {
+    if(true) {
+      resolve('success');
+    } else {
+      reject('failed');
+    }
+  });
+            </code>
+          </pre>
         </div>
       </div>
       <div class="doc-section">
