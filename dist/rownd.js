@@ -1,5 +1,5 @@
 /*
- * rownd - v0.4.2 - 2016-04-11
+ * rownd - v0.4.3 - 2016-04-28
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -17019,6 +17019,11 @@
   Rownd.controllers = accessableControllers;
 
   /**
+   * @description, Allow Rownd applications access to the Ractive Promise implementation
+   */
+  Rownd.Promise = Ractive.Promise;
+
+  /**
    * Function to get the content type for the ajax requests
    */
   var getContentType = function(contentType) {
@@ -17100,7 +17105,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.4.2');
+      info('Running Rownd v0.4.3');
     }
 
     // Function for loading new page
