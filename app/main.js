@@ -298,7 +298,7 @@
    * @description, The function that fires a controller depending on what the current path is
    * @param {newPath} newPath, The new path after clicking a link or using nav buttons
    */
-  var navChange = function(newPath) {
+  var findPage = function(newPath) {
 
     // Update the previously stored hash
     previousHash = currentHash;
@@ -479,12 +479,14 @@
 
   };
 
+  // TODO: remove the listener below and put it in a method which decides if the user is using history
+
   /**
    * @description, Listens to when there was a hashchange made when there is no history mode enabled
    */
   window.addEventListener('hashchange', function() {
     if(!config.useHistory || !window.history) {
-      navChange();
+      findPage();
     }
   }, false);
 
@@ -503,9 +505,9 @@
     }
 
     // Function for loading new page
-    navChange();
+    findPage();
 
-    // TODO: Add history mode
+    // Listener for when
   };
 
   // Used to detect init of page for > ie8
