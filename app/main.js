@@ -20,7 +20,8 @@
     'debug': true,
     'hideInfo': false,
     'showVersion': true,
-    'rootUrl': ''
+    'rootUrl': '',
+    'useHistory': false
   };
 
   // Namespace to store controllers upon set up
@@ -479,16 +480,62 @@
 
   };
 
-  // TODO: remove the listener below and put it in a method which decides if the user is using history
+  /**
+   * @description, Function that traverses up the tree to check for A tags
+   */
+  var searchTree = function(elem) {
+    // Keep looping until elem is the body tag
+    while(elem) {
+
+      // Check if it as a tag
+      if(elem.tagName === 'A') {
+        return elem;
+      }
+
+      // Check the parent of the
+      elem = elem.parentNode;
+    }
+
+    return false;
+  };
 
   /**
-   * @description, Listens to when there was a hashchange made when there is no history mode enabled
+   * @description, function that gets called on click of the document to check if it is a link. If so stop navigation and handle it manually
+   * @param {Event} e,  The mouseevent from clicking on the document
    */
-  window.addEventListener('hashchange', function() {
-    if(!config.useHistory || !window.history) {
-      findPage();
+  var navListen = function(e) {
+
+    var target = e.target;
+
+    // Check if it is a link that is being clicked
+    if(target.tagName !== 'A') {
+      // Check if an a tag is in the parents tree
+      target = searchTree(target);
+
+      // Return nothing if no a tag was found
+      if(!target) {
+        return;
+      }
     }
-  }, false);
+
+    // Get the link url
+    var url = target.getAttribute('href');
+    var targetAttr = target.getAttribute('target');
+
+    // Check if the link uses a host of any kind (checking external)
+    if(url.indexOf('//') > -1 || targetAttr === '_blank') {
+      return;
+    }
+
+    // Update the URL
+    history.pushState(null, null, url);
+
+    // Stop the link actually doing anything
+    e.preventDefault();
+
+    // Get Rownd to update controller
+    findPage(url);
+  };
 
 
   /**
@@ -501,13 +548,29 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.4.3');
+      info('Running Rownd v0.5.0');
     }
 
     // Function for loading new page
     findPage();
 
-    // Listener for when
+    // If no history then use hash else use history
+    if(!config.useHistory || !window.history) {
+      // Listen to the hash changes
+      window.addEventListener('hashchange', function() {
+          findPage();
+      }, false);
+    } else {
+      // Listen to a user click to update the url when clicking a link
+      document.addEventListener('click', function(e) {
+        navListen(e);
+      }, false);
+
+      // Listen to the url when state is changes
+      window.onpopstate = function() {
+        findPage();
+      };
+    }
   };
 
   // Used to detect init of page for > ie8
