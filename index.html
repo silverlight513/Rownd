@@ -113,6 +113,7 @@
             <code class="js">
   var rnd = Rownd.start({
     'debug': true,
+    'useHistory': true,
     'hideInfo': false,
     'showVersion': true,
     'rootUrl': ''
@@ -175,6 +176,17 @@
               Routes
             </h3>
           </a>
+        </div>
+        <div id="using-history-or-hash">
+          <h4>History or Hashing</h4>
+          <p>
+          Routing can be done in Rownd in two different ways. If supported by the browser and useHistory is set to true, the URL routing will work just
+          like a server routing system. If history isn't supported Rownd will fall back to loading each page just like a server with a page load.
+          </p>
+          <p>
+            If you'd rather just use a hashed URL which is supported on all browsers. Instead of linking to pages with strings such as <code class="inline">/new-page</code>, use
+          a string such as this; <code class="inline">#/new-page</code>. Putting this hash there will allow Rownd to detect page changes without reloading when no history API is available.
+          </p>
         </div>
         <div id="creating-routes">
           <h4>Creating Routes</h4>
@@ -395,6 +407,13 @@
             <p>Default - true</p>
             <p>
             The debug configuration toggles the visibility of error logs from Rownd and Ractive.
+            </p>
+          </div>
+          <div id="useHistory">
+            <h4>useHistory</h4>
+            <p>Default - false</p>
+            <p>
+            The useHistory option allows the Rownd application to use the history API instead of using a hashed URL.
             </p>
           </div>
           <div id="hideInfo">
