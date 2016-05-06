@@ -165,8 +165,8 @@
           break;
         }
 
-        // If it's the last item and it matches, return the matched route with it's params
-        if(splitRoute[j] === splitPath[j] && j === 0) {
+        // If it's the last item matches, return the matched route with it's params
+        if(splitRoute[j] === splitPath[j] && j === 0 && splitRoute.length === splitPath.length) {
           matchedRoute = {path: routes[i].path, controller: routes[i].controller, params: params};
           return matchedRoute;
         }
