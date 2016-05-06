@@ -1,5 +1,5 @@
 /*
- * rownd - v0.5.0 - 2016-05-02
+ * rownd - v0.5.1 - 2016-05-06
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -16707,25 +16707,36 @@
       hash = hash.slice(1);
     }
 
-    if(hash.indexOf('#') > -1){
-      hash = hash.split('#')[1];
-    }
-
     return hash;
   };
 
+  /**
+   * @description, Removes the id hash (e.g. hello.com/pages#scroll-here) if there is one
+   * @param  {String} path, The current url of the application
+   * @return {String}, The reformatted route
+   */
+  var removeIdHash = function(path) {
+    if(path.indexOf('#') > -1){
+      path = path.split('#')[0];
+    }
+
+    return path;
+  };
 
   /**
    * @description, Gets a route object that matches the given path
-   * @param  {String} path, The current url of the user
-   * @return {[type]}, The matched route object
+   * @param  {String} path, The current url of the application
+   * @return {Object}, The matched route object
    */
   var findMatchingRoute = function(path) {
+    // Remove the id hash from the path if there is one
+    var strippedPath = removeIdHash(path);
+
     // Loop through the routes object and find a matching path
     for (var i = routes.length - 1; i >= 0; i--) {
 
       // If the route doesn't have any dynamic parts to it
-      if(routes[i].path === path) {
+      if(routes[i].path === strippedPath) {
         return routes[i];
       }
 
@@ -17154,7 +17165,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.5.0');
+      info('Running Rownd v0.5.1');
     }
 
     // Function for loading new page
