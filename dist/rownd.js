@@ -16618,7 +16618,6 @@
   // Create vars needed
   var routes = [];
   var accessableControllers = {};
-  var previousHash;
   var currentHash;
 
   // Set up the config screen so you can
@@ -16917,19 +16916,11 @@
 
   /**
    * @description, The function that fires a controller depending on what the current path is
-   * @param {newPath} newPath, The new path after clicking a link or using nav buttons
    */
-  var findPage = function(newPath) {
-
-    // Update the previously stored hash
-    previousHash = currentHash;
+  var findPage = function() {
 
     // Get the new hash from param or function
-    if(!newPath) {
-      currentHash = getNewHash();
-    } else {
-      currentHash = newPath.split('?')[0];
-    }
+    currentHash = getNewHash();
 
     // Find the route from the routes object
     var matchedRoute = findMatchingRoute(currentHash);
@@ -17154,7 +17145,7 @@
     e.preventDefault();
 
     // Get Rownd to update controller
-    findPage(url);
+    findPage();
   };
 
 
