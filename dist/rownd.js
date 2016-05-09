@@ -1,5 +1,5 @@
 /*
- * rownd - v0.5.2 - 2016-05-06
+ * rownd - v0.5.3 - 2016-05-09
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -16795,6 +16795,9 @@
     if(config.rootUrl) {
       var hashRegex = new RegExp('^'+config.rootUrl,'g');
       hash = hash.replace(hashRegex, '');
+
+      // If there is no slash at the start of the hash then add it
+      hash = startsWith(hash, '/') ? hash : '/' + hash;
     }
 
     // Remove trailing slash
@@ -17165,7 +17168,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.5.2');
+      info('Running Rownd v0.5.3');
     }
 
     // Function for loading new page
