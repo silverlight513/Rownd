@@ -1,5 +1,5 @@
 /*
- * rownd - v0.5.3 - 2016-05-09
+ * rownd - v0.5.4 - 2016-05-09
  * By Jack Rimell - Copyright (c) 2016 Jack Rimell;
 */
 (function (global, factory) {
@@ -17159,7 +17159,7 @@
     info('Initializing Rownd');
     // Need to somehow auto update number
     if(config.showVersion){
-      info('Running Rownd v0.5.3');
+      info('Running Rownd v0.5.4');
     }
 
     // Function for loading new page
